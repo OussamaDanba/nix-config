@@ -1,14 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
-
-  # TODO: Hibernation/Sleep?
 
   # So we can still access windows
   boot.supportedFilesystems = [ "ntfs" ];
@@ -35,19 +32,13 @@
   time.timeZone = "Europe/Amsterdam";
   i18n = {
     defaultLocale = "nl_NL.UTF-8";
-    extraLocaleSettings = {
-      LANGUAGE = "en_US.UTF-8";
-    };
+    extraLocaleSettings = { LANGUAGE = "en_US.UTF-8"; };
   };
   console.useXkbConfig = true;
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
 
-  fonts.fonts = with pkgs; [
-    font-awesome
-    noto-fonts
-    noto-fonts-cjk
-  ];
+  fonts.fonts = with pkgs; [ font-awesome noto-fonts noto-fonts-cjk ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -69,11 +60,7 @@
   };
 
   # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    htop
-    home-manager    
-    memtest86-efi
-  ];
+  environment.systemPackages = with pkgs; [ htop home-manager memtest86-efi ];
 
   # Enable the X11 windowing system.
   services.xserver = {

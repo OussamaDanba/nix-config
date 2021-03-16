@@ -11,12 +11,14 @@
     discord
     exa
     fd
+    feh
     firefox
     git
     google-drive-ocamlfuse
     i3lock-fancy
     keepass
     maim
+    nixfmt
     pavucontrol
     pcmanfm
     playerctl
@@ -43,18 +45,15 @@
     lfs.enable = true;
     userEmail = "oussama@danba.nl";
     userName = "Oussama Danba";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
+    extraConfig = { init.defaultBranch = "main"; };
   };
 
-  programs.alacritty = {
-    enable = true;
-  };
+  programs.alacritty = { enable = true; };
 
-  programs.firefox = {
-    enable = true;
-  };
+  # TODO: Use feh for randomized backgrounds
+  programs.feh.enable = true;
+
+  programs.firefox = { enable = true; };
 
   xsession.enable = true;
   xsession.windowManager.i3 = {
@@ -71,29 +70,51 @@
       };
       modifier = "Mod4";
       startup = [
-        { command = "google-drive-ocamlfuse ~/Drive"; always = false; notification = false; }
+        {
+          command = "google-drive-ocamlfuse ~/Drive";
+          always = false;
+          notification = false;
+        }
+        #{
+        #  command = "xrandr --output HDMI-0 --primary";
+        #  always = false;
+        #  notification = false;
+        #} # HACK: xrandHeads not working properly
       ];
       keybindings =
-       let modifier = config.xsession.windowManager.i3.config.modifier;
-       in lib.mkOptionDefault {
-        "${modifier}+grave" = "exec pcmanfm";
-        "${modifier}+Escape" = "exec i3lock-fancy";
-        "${modifier}+b" = "border toggle";
-        "${modifier}+shift+t" = "move scratchpad";
-        "${modifier}+t" = "scratchpad show";
-        "Print" = "exec maim --select | xclip -selection clipboard -t image/png";
-        "XF86AudioPlay" = "exec playerctl play-pause";
-        "XF86AudioStop" = "exec playerctl stop";
-        "XF86AudioPrev" = "exec playerctl previous";
-        "XF86AudioNext" = "exec playerctl next";
-        "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
-        "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -2%";
-        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +2%";
-      };
-      bars = [{
-        fonts = [ "FontAwesome 9" "Noto Sans Mono 9" ];
-      }];
+        let modifier = config.xsession.windowManager.i3.config.modifier;
+        in lib.mkOptionDefault {
+          "${modifier}+grave" = "exec pcmanfm";
+          "${modifier}+Escape" = "exec i3lock-fancy";
+          "${modifier}+b" = "border toggle";
+          "${modifier}+shift+t" = "move scratchpad";
+          "${modifier}+t" = "scratchpad show";
+          "Print" =
+            "exec maim --select | xclip -selection clipboard -t image/png";
+          "XF86AudioPlay" = "exec playerctl play-pause";
+          "XF86AudioStop" = "exec playerctl stop";
+          "XF86AudioPrev" = "exec playerctl previous";
+          "XF86AudioNext" = "exec playerctl next";
+          "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
+          "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -2%";
+          "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +2%";
+        };
+      # TODO: This worked but suddenly broke?
+      #bars = [{
+      #  fonts = [ "FontAwesome 9" "Noto Sans Mono 9" ];
+      #}];
       fonts = [ "FontAwesome 9" "Noto Sans Mono 9" ];
+    };
+  };
+
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        background = "#181818";
+        foreground = "#E3C7AF";
+        geometry = "300x5-25+25";
+      };
     };
   };
 
