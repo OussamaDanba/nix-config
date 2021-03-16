@@ -14,11 +14,15 @@
     firefox
     git
     google-drive-ocamlfuse
+    i3lock-fancy
     keepass
-    pcmanfm
+    maim
     pavucontrol
+    pcmanfm
+    playerctl
     vlc
     qbittorrent
+    xclip
     xdotool
   ];
 
@@ -29,6 +33,8 @@
       ls = "exa";
       l = "exa -abghHlS --git";
       con = "home-manager edit";
+      update = "sudo nix-channel --update";
+      upgrade = "sudo nixos-rebuild switch && home-manager switch";
     };
   };
 
@@ -70,10 +76,24 @@
       keybindings =
        let modifier = config.xsession.windowManager.i3.config.modifier;
        in lib.mkOptionDefault {
+        "${modifier}+grave" = "exec pcmanfm";
+        "${modifier}+Escape" = "exec i3lock-fancy";
         "${modifier}+b" = "border toggle";
         "${modifier}+shift+t" = "move scratchpad";
         "${modifier}+t" = "scratchpad show";
+        "Print" = "exec maim --select | xclip -selection clipboard -t image/png";
+        "XF86AudioPlay" = "exec playerctl play-pause";
+        "XF86AudioStop" = "exec playerctl stop";
+        "XF86AudioPrev" = "exec playerctl previous";
+        "XF86AudioNext" = "exec playerctl next";
+        "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -2%";
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +2%";
       };
+      bars = [{
+        fonts = [ "FontAwesome 9" "Noto Sans Mono 9" ];
+      }];
+      fonts = [ "FontAwesome 9" "Noto Sans Mono 9" ];
     };
   };
 

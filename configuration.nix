@@ -43,6 +43,12 @@
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
 
+  fonts.fonts = with pkgs; [
+    font-awesome
+    noto-fonts
+    noto-fonts-cjk
+  ];
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
