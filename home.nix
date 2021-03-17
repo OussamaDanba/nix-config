@@ -42,12 +42,12 @@
     enableVteIntegration = true;
     initExtra = ''
       function cd {
-        builtin cd "$@" && exa -abghHlS --git
+        builtin cd "$@" && exa -abhl --git
       }
     '';
     shellAliases = {
       ls = "exa";
-      l = "exa -abghHlS --git";
+      l = "exa -abhl --git";
       con = "home-manager edit";
       update = "sudo nix-channel --update";
       upgrade = "sudo nixos-rebuild switch && home-manager switch";
