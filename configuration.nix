@@ -38,7 +38,9 @@
   services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl";
 
-  fonts.fonts = with pkgs; [ font-awesome noto-fonts noto-fonts-cjk ];
+  # TODO: ?
+  #fonts.fonts = with pkgs; [ font-awesome noto-fonts noto-fonts-cjk ];
+  #fonts.fontconfig.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -77,6 +79,8 @@
     windowManager.i3.enable = true;
     videoDrivers = [ "nvidia" ];
   };
+
+  programs.dconf.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

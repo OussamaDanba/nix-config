@@ -13,12 +13,16 @@
     fd
     feh
     firefox
+    font-awesome
     git
+    gnome3.gnome-calculator
     google-drive-ocamlfuse
     i3lock-fancy
     keepass
     maim
     nixfmt
+    noto-fonts
+    noto-fonts-cjk
     pavucontrol
     pcmanfm
     playerctl
@@ -27,6 +31,8 @@
     xclip
     xdotool
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs.bash = {
     enable = true;
@@ -75,35 +81,58 @@
           always = false;
           notification = false;
         }
-        #{
-        #  command = "xrandr --output HDMI-0 --primary";
-        #  always = false;
-        #  notification = false;
-        #} # HACK: xrandHeads not working properly
+        {
+          command = "xrandr --output HDMI-0 --primary";
+          always = false;
+          notification = false;
+        } # HACK: xrandHeads not working properly
       ];
       keybindings =
         let modifier = config.xsession.windowManager.i3.config.modifier;
         in lib.mkOptionDefault {
-          "${modifier}+grave" = "exec pcmanfm";
-          "${modifier}+Escape" = "exec i3lock-fancy";
+          "${modifier}+grave" = "exec --no-startup-id pcmanfm";
+          "${modifier}+Escape" = "exec --no-startup-id i3lock-fancy";
           "${modifier}+b" = "border toggle";
           "${modifier}+shift+t" = "move scratchpad";
           "${modifier}+t" = "scratchpad show";
           "Print" =
-            "exec maim --select | xclip -selection clipboard -t image/png";
-          "XF86AudioPlay" = "exec playerctl play-pause";
-          "XF86AudioStop" = "exec playerctl stop";
-          "XF86AudioPrev" = "exec playerctl previous";
-          "XF86AudioNext" = "exec playerctl next";
-          "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
-          "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -2%";
-          "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +2%";
+            "exec --no-startup-id maim --select | xclip -selection clipboard -t image/png";
+          "XF86AudioPlay" = "exec --no-startup-id playerctl play-pause";
+          "XF86AudioStop" = "exec --no-startup-id playerctl stop";
+          "XF86AudioPrev" = "exec --no-startup-id playerctl previous";
+          "XF86AudioNext" = "exec --no-startup-id playerctl next";
+          "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute 0 toggle";
+          "XF86AudioLowerVolume" =
+            "exec --no-startup-id pactl set-sink-volume 0 -2%";
+          "XF86AudioRaiseVolume" =
+            "exec --no-startup-id pactl set-sink-volume 0 +2%";
         };
       # TODO: This worked but suddenly broke?
       #bars = [{
-      #  fonts = [ "FontAwesome 9" "Noto Sans Mono 9" ];
+      #  fonts = [ "FontAwesome 14" "Noto Sans Mono 14" ];
       #}];
-      fonts = [ "FontAwesome 9" "Noto Sans Mono 9" ];
+      #fonts = [ "FontAwesome 14" "Noto Sans Mono 14" ];
+    };
+  };
+
+  # TODO: Use Noto fonts if possible?
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Arc-Dark";
+      package = pkgs.arc-theme;
+    };
+    iconTheme = {
+      name = "Arc";
+      package = pkgs.arc-icon-theme;
+    };
+  };
+
+  qt = {
+    enable = true;
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
     };
   };
 
@@ -111,9 +140,10 @@
     enable = true;
     settings = {
       global = {
-        background = "#181818";
-        foreground = "#E3C7AF";
+        background = "#000000"; # "#181818";
+        foreground = "#000000"; # "#E3C7AF";
         geometry = "300x5-25+25";
+        font = "Noto Sans Mono";
       };
     };
   };
