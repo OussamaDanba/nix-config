@@ -41,12 +41,6 @@
     enable = true;
     enableVteIntegration = true;
     initExtra = ''
-      function _update_ps1() {
-        PS1="$(${pkgs.powerline-go}/bin/powerline-go -error $?)"
-      }
-      if [ "$TERM" != "linux" ] && [ -f "${pkgs.powerline-go}/bin/powerline-go" ]; then
-        PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-      fi
       function cd {
         builtin cd "$@" && exa -abghHlS --git
       }
@@ -126,11 +120,10 @@
           "XF86AudioRaiseVolume" =
             "exec --no-startup-id pactl set-sink-volume 0 +2%";
         };
-      # TODO: This worked but suddenly broke?
       #bars = [{
-      #  fonts = [ "FontAwesome 14" "Noto Sans Mono 14" ];
+      #  fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
       #}];
-      #fonts = [ "FontAwesome 14" "Noto Sans Mono 14" ];
+      fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
     };
   };
 
@@ -163,10 +156,20 @@
         foreground = "#000000"; # "#E3C7AF";
         geometry = "300x5-25+25";
         font = "Noto Sans Mono";
+        sort = true;
+        alignment = "center";
       };
     };
   };
 
+  services.picom = {
+    enable = true;
+    vSync = true;
+    extraOptions = ''
+      xrender-sync-fence = true;
+      glx-no-stencil = true;
+    '';
+  };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
