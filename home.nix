@@ -19,6 +19,7 @@
     google-drive-ocamlfuse
     i3lock-fancy
     keepass
+    libreoffice-fresh
     maim
     nixfmt
     noto-fonts
@@ -26,6 +27,8 @@
     pavucontrol
     pcmanfm
     playerctl
+    powerline-fonts
+    powerline-go
     vlc
     qbittorrent
     xclip
@@ -37,6 +40,17 @@
   programs.bash = {
     enable = true;
     enableVteIntegration = true;
+    initExtra = ''
+      function _update_ps1() {
+        PS1="$(${pkgs.powerline-go}/bin/powerline-go -error $?)"
+      }
+      if [ "$TERM" != "linux" ] && [ -f "${pkgs.powerline-go}/bin/powerline-go" ]; then
+        PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+      fi
+      function cd {
+        builtin cd "$@" && exa -abghHlS --git
+      }
+    '';
     shellAliases = {
       ls = "exa";
       l = "exa -abghHlS --git";
@@ -44,6 +58,11 @@
       update = "sudo nix-channel --update";
       upgrade = "sudo nixos-rebuild switch && home-manager switch";
     };
+  };
+
+  programs.powerline-go = {
+    enable = true;
+    modules = [ "host" "ssh" "cwd" "gitlite" "nix-shell" ];
   };
 
   programs.git = {
