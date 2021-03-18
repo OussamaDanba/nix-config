@@ -91,10 +91,11 @@ in {
       extraConfig = { init.defaultBranch = "main"; };
     };
 
-    # TODO: Bindings, settings and so on
     alacritty = {
       enable = true;
       settings = {
+        font = { size = 11.0; };
+        selection = { save_to_clipboard = true; };
         colors = {
           primary = {
             background = "${primary_background}";
@@ -125,6 +126,42 @@ in {
             white = "${bright_white}";
           };
         };
+        key_bindings = [
+          {
+            key = "V";
+            mods = "Control|Alt";
+            mode = "~Vi";
+            action = "Paste";
+          }
+          {
+            key = "C";
+            mods = "Control|Alt";
+            action = "Copy";
+          }
+          {
+            key = "F";
+            mods = "Control|Alt";
+            mode = "~Search";
+            action = "SearchForward";
+          }
+          {
+            key = "B";
+            mods = "Control|Alt";
+            mode = "~Search";
+            action = "SearchBackward";
+          }
+          {
+            key = "C";
+            mods = "Control|Alt";
+            mode = "Vi|~Search";
+            action = "ClearSelection";
+          }
+          {
+            key = "Insert";
+            mods = "Alt";
+            action = "PasteSelection";
+          }
+        ];
       };
     };
 
@@ -177,6 +214,7 @@ in {
       };
       modifier = "Mod4";
       startup = [
+        # TODO: Get rid of this; it's annoying
         {
           command = "google-drive-ocamlfuse ~/Drive";
           always = false;
@@ -208,10 +246,12 @@ in {
           "XF86AudioRaiseVolume" =
             "exec --no-startup-id pactl set-sink-volume 0 +2%";
         };
+      # TODO: i3status bar
       #bars = [{
       #  fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
       #}];
       fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
+      # TODO: Rofi
     };
   };
 
