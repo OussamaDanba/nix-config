@@ -78,6 +78,9 @@
 
   programs.dconf.enable = true;
 
+  # Don't wait on internet connection so we can boot faster
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
