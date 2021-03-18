@@ -60,76 +60,107 @@ in {
 
   fonts.fontconfig.enable = true;
 
-  programs.bash = {
-    enable = true;
-    enableVteIntegration = true;
-    initExtra = ''
-      function cd {
-        builtin cd "$@" && exa -abhl --git
-      }
-    '';
-    shellAliases = {
-      ls = "exa";
-      l = "exa -abhl --git";
-      con = "home-manager edit";
-      update = "sudo nix-channel --update";
-      upgrade = "sudo nixos-rebuild switch && home-manager switch";
+  programs = {
+    bash = {
+      enable = true;
+      enableVteIntegration = true;
+      initExtra = ''
+        function cd {
+          builtin cd "$@" && exa -abhl --git
+        }
+      '';
+      shellAliases = {
+        ls = "exa";
+        l = "exa -abhl --git";
+        con = "home-manager edit";
+        update = "sudo nix-channel --update";
+        upgrade = "sudo nixos-rebuild switch && home-manager switch";
+      };
     };
-  };
 
-  programs.powerline-go = {
-    enable = true;
-    modules = [ "host" "ssh" "cwd" "gitlite" "nix-shell" ];
-  };
+    powerline-go = {
+      enable = true;
+      modules = [ "host" "ssh" "cwd" "gitlite" "nix-shell" ];
+    };
 
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-    userEmail = "oussama@danba.nl";
-    userName = "Oussama Danba";
-    extraConfig = { init.defaultBranch = "main"; };
-  };
+    git = {
+      enable = true;
+      lfs.enable = true;
+      userEmail = "oussama@danba.nl";
+      userName = "Oussama Danba";
+      extraConfig = { init.defaultBranch = "main"; };
+    };
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      colors = {
-        primary = {
-          background = "${primary_background}";
-          foreground = "${primary_foreground}";
-        };
-        cursor = {
-          text = "${cursor_text}";
-          cursor = "${cursor_cursor}";
-        };
-        normal = {
-          black = "${normal_black}";
-          red = "${normal_red}";
-          green = "${normal_green}";
-          yellow = "${normal_yellow}";
-          blue = "${normal_blue}";
-          magenta = "${normal_magenta}";
-          cyan = "${normal_cyan}";
-          white = "${normal_white}";
-        };
-        bright = {
-          black = "${bright_black}";
-          red = "${bright_red}";
-          green = "${bright_green}";
-          yellow = "${bright_yellow}";
-          blue = "${bright_blue}";
-          magent = "${bright_magenta}";
-          cyan = "${bright_cyan}";
-          white = "${bright_white}";
+    # TODO: Bindings, settings and so on
+    alacritty = {
+      enable = true;
+      settings = {
+        colors = {
+          primary = {
+            background = "${primary_background}";
+            foreground = "${primary_foreground}";
+          };
+          cursor = {
+            text = "${cursor_text}";
+            cursor = "${cursor_cursor}";
+          };
+          normal = {
+            black = "${normal_black}";
+            red = "${normal_red}";
+            green = "${normal_green}";
+            yellow = "${normal_yellow}";
+            blue = "${normal_blue}";
+            magenta = "${normal_magenta}";
+            cyan = "${normal_cyan}";
+            white = "${normal_white}";
+          };
+          bright = {
+            black = "${bright_black}";
+            red = "${bright_red}";
+            green = "${bright_green}";
+            yellow = "${bright_yellow}";
+            blue = "${bright_blue}";
+            magent = "${bright_magenta}";
+            cyan = "${bright_cyan}";
+            white = "${bright_white}";
+          };
         };
       };
     };
+
+    autorandr = {
+      enable = true;
+
+      profiles = {
+        pc = {
+          fingerprint = {
+            HDMI-0 = "*";
+            DP-0 = "*";
+          };
+          config = {
+            HDMI-0 = {
+              enable = true;
+              primary = true;
+              position = "1920x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+            DP-0 = {
+              enable = true;
+              primary = false;
+              position = "0x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+          };
+        };
+      };
+    };
+
+    # TODO: Use feh for randomized backgrounds
+    feh.enable = true;
+    firefox.enable = true;
   };
-
-  # TODO: Use feh for randomized backgrounds
-  programs.feh.enable = true;
-
-  programs.firefox = { enable = true; };
 
   xsession.enable = true;
   xsession.windowManager.i3 = {
@@ -184,36 +215,67 @@ in {
     };
   };
 
-  programs.autorandr = {
-    enable = true;
-
-    profiles = {
-      pc = {
-        fingerprint = {
-          HDMI-0 = "*";
-          DP-0 = "*";
+  services = {
+    dunst = {
+      enable = true;
+      settings = {
+        global = {
+          font = "Noto Sans Mono 11";
+          markup = "full";
+          format = "<b>%s</b>\\n%b";
+          sort = true;
+          indicate_hidden = true;
+          alignment = "center";
+          bounce_freq = 0;
+          show_age_threshold = 30;
+          word_wrap = true;
+          ignore_newline = false;
+          geometry = "350x5-25+25";
+          transparency = 0;
+          idle_threshold = 120;
+          max_icon_size = 60;
+          corner_radius = 6;
+          sticky_history = true;
+          line_height = 0;
+          separator_height = 5;
+          padding = 8;
+          horizontal_padding = 8;
+          separator_color = "#00000000";
+          startup_notification = false;
+          frame_width = 1;
+          frame_color = "${normal_black}";
         };
-        config = {
-          HDMI-0 = {
-            enable = true;
-            primary = true;
-            position = "1920x0";
-            mode = "1920x1080";
-            rate = "60.00";
-          };
-          DP-0 = {
-            enable = true;
-            primary = false;
-            position = "0x0";
-            mode = "1920x1080";
-            rate = "60.00";
-          };
+
+        urgency_low = {
+          background = "${normal_green}";
+          foreground = "${normal_black}";
+          timeout = 5;
+        };
+
+        urgency_normal = {
+          background = "${normal_yellow}";
+          foreground = "${normal_black}";
+          timeout = 20;
+        };
+
+        urgency_critical = {
+          background = "${normal_red}";
+          foreground = "${normal_black}";
+          timeout = 0;
         };
       };
     };
+
+    picom = {
+      enable = true;
+      vSync = true;
+      extraOptions = ''
+        xrender-sync-fence = true;
+        glx-no-stencil = true;
+      '';
+    };
   };
 
-  # TODO: Use Noto fonts if possible?
   gtk = {
     enable = true;
     theme = {
@@ -224,6 +286,7 @@ in {
       name = "Arc";
       package = pkgs.arc-icon-theme;
     };
+    font.name = "Noto Sans Mono";
   };
 
   qt = {
@@ -232,65 +295,6 @@ in {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;
     };
-  };
-
-  services.dunst = {
-    enable = true;
-    settings = {
-      global = {
-        font = "Noto Sans Mono 11";
-        markup = "full";
-        format = "<b>%s</b>\\n%b";
-        sort = true;
-        indicate_hidden = true;
-        alignment = "center";
-        bounce_freq = 0;
-        show_age_threshold = 30;
-        word_wrap = true;
-        ignore_newline = false;
-        geometry = "300x5-25+25";
-        transparency = 0;
-        idle_threshold = 120;
-        max_icon_size = 60;
-        corner_radius = 6;
-        sticky_history = true;
-        line_height = 0;
-        separator_height = 5;
-        padding = 8;
-        horizontal_padding = 8;
-        separator_color = "#00000000";
-        startup_notification = false;
-        frame_width = 1;
-        frame_color = "${normal_black}";
-      };
-
-      urgency_low = {
-        background = "${normal_green}";
-        foreground = "${normal_black}";
-        timeout = 5;
-      };
-
-      urgency_normal = {
-        background = "${normal_yellow}";
-        foreground = "${normal_black}";
-        timeout = 20;
-      };
-
-      urgency_critical = {
-        background = "${normal_red}";
-        foreground = "${normal_black}";
-        timeout = 0;
-      };
-    };
-  };
-
-  services.picom = {
-    enable = true;
-    vSync = true;
-    extraOptions = ''
-      xrender-sync-fence = true;
-      glx-no-stencil = true;
-    '';
   };
 
   # This value determines the Home Manager release that your
