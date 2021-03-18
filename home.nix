@@ -1,6 +1,28 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  # Hyper colors
+  primary_background = "#000000";
+  primary_foreground = "#FFFFFF";
+  cursor_text = "#F81CE5";
+  cursor_cursor = "#FFFFFF";
+  normal_black = "#000000";
+  normal_red = "#FE0100";
+  normal_green = "#33FF00";
+  normal_yellow = "#FEFF00";
+  normal_blue = "#0066FF";
+  normal_magenta = "#CC00FF";
+  normal_cyan = "#00FFFF";
+  normal_white = "#D0D0D0";
+  bright_black = "#808080";
+  bright_red = "#FE0100";
+  bright_green = "#33FF00";
+  bright_yellow = "#FEFF00";
+  bright_blue = "#0066FF";
+  bright_magenta = "#CC00FF";
+  bright_cyan = "#00FFFF";
+  bright_white = "#FFFFFF";
+in {
   programs.home-manager.enable = true;
 
   home.username = "odanba";
@@ -30,6 +52,7 @@
     powerline-fonts
     powerline-go
     vlc
+    vscode
     qbittorrent
     xclip
     xdotool
@@ -67,7 +90,41 @@
     extraConfig = { init.defaultBranch = "main"; };
   };
 
-  programs.alacritty = { enable = true; };
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      colors = {
+        primary = {
+          background = "${primary_background}";
+          foreground = "${primary_foreground}";
+        };
+        cursor = {
+          text = "${cursor_text}";
+          cursor = "${cursor_cursor}";
+        };
+        normal = {
+          black = "${normal_black}";
+          red = "${normal_red}";
+          green = "${normal_green}";
+          yellow = "${normal_yellow}";
+          blue = "${normal_blue}";
+          magenta = "${normal_magenta}";
+          cyan = "${normal_cyan}";
+          white = "${normal_white}";
+        };
+        bright = {
+          black = "${bright_black}";
+          red = "${bright_red}";
+          green = "${bright_green}";
+          yellow = "${bright_yellow}";
+          blue = "${bright_blue}";
+          magent = "${bright_magenta}";
+          cyan = "${bright_cyan}";
+          white = "${bright_white}";
+        };
+      };
+    };
+  };
 
   # TODO: Use feh for randomized backgrounds
   programs.feh.enable = true;
@@ -95,7 +152,7 @@
           notification = false;
         }
         {
-          command = "xrandr --output HDMI-0 --primary";
+          command = "autorandr --change";
           always = false;
           notification = false;
         } # HACK: xrandHeads not working properly
@@ -127,6 +184,35 @@
     };
   };
 
+  programs.autorandr = {
+    enable = true;
+
+    profiles = {
+      pc = {
+        fingerprint = {
+          HDMI-0 = "*";
+          DP-0 = "*";
+        };
+        config = {
+          HDMI-0 = {
+            enable = true;
+            primary = true;
+            position = "1920x0";
+            mode = "1920x1080";
+            rate = "60.00";
+          };
+          DP-0 = {
+            enable = true;
+            primary = false;
+            position = "0x0";
+            mode = "1920x1080";
+            rate = "60.00";
+          };
+        };
+      };
+    };
+  };
+
   # TODO: Use Noto fonts if possible?
   gtk = {
     enable = true;
@@ -152,12 +238,48 @@
     enable = true;
     settings = {
       global = {
-        background = "#000000"; # "#181818";
-        foreground = "#000000"; # "#E3C7AF";
-        geometry = "300x5-25+25";
-        font = "Noto Sans Mono";
+        font = "Noto Sans Mono 11";
+        markup = "full";
+        format = "<b>%s</b>\\n%b";
         sort = true;
+        indicate_hidden = true;
         alignment = "center";
+        bounce_freq = 0;
+        show_age_threshold = 30;
+        word_wrap = true;
+        ignore_newline = false;
+        geometry = "300x5-25+25";
+        transparency = 0;
+        idle_threshold = 120;
+        max_icon_size = 60;
+        corner_radius = 6;
+        sticky_history = true;
+        line_height = 0;
+        separator_height = 5;
+        padding = 8;
+        horizontal_padding = 8;
+        separator_color = "#00000000";
+        startup_notification = false;
+        frame_width = 1;
+        frame_color = "${normal_black}";
+      };
+
+      urgency_low = {
+        background = "${normal_green}";
+        foreground = "${normal_black}";
+        timeout = 5;
+      };
+
+      urgency_normal = {
+        background = "${normal_yellow}";
+        foreground = "${normal_black}";
+        timeout = 20;
+      };
+
+      urgency_critical = {
+        background = "${normal_red}";
+        foreground = "${normal_black}";
+        timeout = 0;
       };
     };
   };
@@ -170,6 +292,7 @@
       glx-no-stencil = true;
     '';
   };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
