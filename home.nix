@@ -219,7 +219,6 @@ in {
       };
     };
 
-    # TODO: Use feh for randomized backgrounds
     feh.enable = true;
     firefox.enable = true;
   };
@@ -238,12 +237,19 @@ in {
         mouseWarping = false;
       };
       modifier = "Mod4";
-      startup = [{
-        # HACK: xrandHeads not working properly
-        command = "autorandr --change";
-        always = false;
-        notification = false;
-      }];
+      startup = [
+        {
+          # HACK: xrandHeads not working properly
+          command = "autorandr --change";
+          always = false;
+          notification = false;
+        }
+        {
+          command = "feh --randomize --bg-fill ~/Pictures/Backgrounds/*";
+          always = false;
+          notification = false;
+        }
+      ];
       menu = ''
         "${pkgs.rofi}/bin/rofi -modi window,drun,combi -show combi -icon-theme \\"Arc\\" -show-icons"
       '';
