@@ -426,6 +426,15 @@ in {
       };
     };
 
+    gammastep = {
+      enable = true;
+      latitude = "51.847894";
+      longitude = "5.872281";
+      temperature.day = 6500;
+      temperature.night = 3200;
+      tray = true;
+    };
+
     picom = {
       enable = true;
       vSync = true;
