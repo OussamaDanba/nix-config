@@ -326,7 +326,6 @@ in {
       name = "Arc";
       package = pkgs.arc-icon-theme;
     };
-    font.name = "Noto Sans";
   };
 
   qt = {
