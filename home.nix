@@ -350,7 +350,6 @@ in {
             "exec --no-startup-id pactl set-sink-volume 0 +2%";
         };
       bars = [{
-        position = "top";
         colors = {
           background = "${primary_background}";
           bindingMode = {
@@ -370,6 +369,7 @@ in {
           };
         };
         fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
+        trayOutput = "primary";
         statusCommand =
           "i3status-rs ~/.config/i3status-rust/config-default.toml";
       }];
