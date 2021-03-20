@@ -31,6 +31,7 @@ in {
   home.packages = with pkgs; [
     alacritty
     discord
+    drive
     exa
     fd
     feh
@@ -38,7 +39,6 @@ in {
     font-awesome
     git
     gnome3.gnome-calculator
-    google-drive-ocamlfuse
     i3lock-fancy
     keepass
     libreoffice-fresh
@@ -51,9 +51,10 @@ in {
     playerctl
     powerline-fonts
     powerline-go
+    qbittorrent
+    rofi
     vlc
     vscode
-    qbittorrent
     xclip
     xdotool
   ];
@@ -165,6 +166,30 @@ in {
       };
     };
 
+    rofi = {
+      enable = true;
+      colors = {
+        window = {
+          background = "${primary_background}";
+          border = "${normal_blue}";
+          separator = "${normal_red}";
+        };
+
+        rows = {
+          normal = {
+            background = "${primary_background}";
+            foreground = "${primary_foreground}";
+            backgroundAlt = "${primary_background}";
+            highlight = {
+              background = "${primary_foreground}";
+              foreground = "${primary_background}";
+            };
+          };
+        };
+      };
+      font = "Noto Sans Mono 14";
+    };
+
     autorandr = {
       enable = true;
 
@@ -213,19 +238,15 @@ in {
         mouseWarping = false;
       };
       modifier = "Mod4";
-      startup = [
-        # TODO: Get rid of this; it's annoying
-        {
-          command = "google-drive-ocamlfuse ~/Drive";
-          always = false;
-          notification = false;
-        }
-        {
-          command = "autorandr --change";
-          always = false;
-          notification = false;
-        } # HACK: xrandHeads not working properly
-      ];
+      startup = [{
+        # HACK: xrandHeads not working properly
+        command = "autorandr --change";
+        always = false;
+        notification = false;
+      }];
+      menu = ''
+        "${pkgs.rofi}/bin/rofi -modi window,drun,combi -show combi -icon-theme \\"Arc\\" -show-icons"
+      '';
       keybindings =
         let modifier = config.xsession.windowManager.i3.config.modifier;
         in lib.mkOptionDefault {
@@ -251,7 +272,6 @@ in {
       #  fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
       #}];
       fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
-      # TODO: Rofi
     };
   };
 
@@ -270,7 +290,7 @@ in {
           show_age_threshold = 30;
           word_wrap = true;
           ignore_newline = false;
-          geometry = "350x5-25+25";
+          geometry = "400x5-25+25";
           transparency = 0;
           idle_threshold = 120;
           max_icon_size = 60;
