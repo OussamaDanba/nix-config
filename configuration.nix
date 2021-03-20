@@ -40,6 +40,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin pkgs.brlaser ];
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 
   # Enable sound through pulseaudio.
   sound.enable = true;
