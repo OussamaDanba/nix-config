@@ -349,6 +349,7 @@ in {
             "exec --no-startup-id pactl set-sink-volume 0 +2%";
         };
       bars = [{
+        position = "top";
         colors = {
           background = "${primary_background}";
           bindingMode = {
