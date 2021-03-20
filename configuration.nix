@@ -68,7 +68,7 @@
   services.xserver.libinput = {
     enable = true;
     mouse.accelProfile = "flat";
-    mouse.accelSpeed = "-0.5";
+    mouse.accelSpeed = "0.0";
   };
 
   users.users.odanba = {

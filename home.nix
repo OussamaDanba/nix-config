@@ -30,7 +30,8 @@ in {
 
   home.packages = with pkgs; [
     alacritty
-    clementine
+    # TODO: Clementine keeps breaking builds
+    #clementine
     discord
     drive
     exa
