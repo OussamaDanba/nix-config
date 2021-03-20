@@ -220,6 +220,80 @@ in {
       };
     };
 
+    i3status-rust = {
+      enable = true;
+      bars.default = {
+        settings = {
+          theme = {
+            name = "native";
+            overrides = {
+              idle_bg = "${primary_background}";
+              idle_fg = "${primary_foreground}";
+              info_bg = "${normal_blue}";
+              info_fg = "${primary_foreground}";
+              warning_bg = "${normal_yellow}";
+              warning_fg = "${primary_background}";
+              good_bg = "${normal_green}";
+              good_fg = "${primary_background}";
+              critical_bg = "${normal_red}";
+              critical_fg = "${primary_foreground}";
+            };
+          };
+          icons = { name = "awesome5"; };
+        };
+        blocks = [
+          {
+            block = "disk_space";
+            path = "/";
+            alias = "/";
+            info_type = "used";
+            unit = "GB";
+            interval = 60;
+            warning = 80.0;
+            alert = 90.0;
+            format = " {used}/{total} {unit}";
+          }
+          {
+            block = "memory";
+            format_mem = "{Mum}/{MTm} ({Mup}%)";
+            format_swap = "{SUm}/{STm} ({SUp}%)";
+          }
+          {
+            block = "nvidia_gpu";
+            label = "";
+          }
+          {
+            block = "cpu";
+            format = "{barchart} {utilization} {frequency}";
+          }
+          {
+            block = "net";
+            format = "{ip}";
+            # TODO: Enable when package has been updated (only on upstream right now)
+            #format_alt = "{speed_up} {speed_down}";
+          }
+          {
+            block = "weather";
+            format = "{weather} {temp}°C {humidity}% RH";
+            service = {
+              name = "openweathermap";
+              api_key = "f2308aba9fb59395c4466234d0ab348b";
+              city_id = "2750053";
+              units = "metric";
+            };
+          }
+          {
+            block = "sound";
+            step_width = 1;
+          }
+          {
+            block = "time";
+            format = "%Y-%m-%d %H:%M";
+          }
+        ];
+      };
+    };
+
     feh.enable = true;
     firefox.enable = true;
   };
@@ -274,10 +348,29 @@ in {
           "XF86AudioRaiseVolume" =
             "exec --no-startup-id pactl set-sink-volume 0 +2%";
         };
-      # TODO: i3status bar
-      #bars = [{
-      #  fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
-      #}];
+      bars = [{
+        colors = {
+          background = "${primary_background}";
+          bindingMode = {
+            border = "${normal_red}";
+            background = "${normal_red}";
+            text = "${normal_black}";
+          };
+          focusedWorkspace = {
+            border = "${normal_blue}";
+            background = "${normal_blue}";
+            text = "${normal_black}";
+          };
+          inactiveWorkspace = {
+            border = "${primary_background}";
+            background = "${primary_background}";
+            text = "${primary_foreground}";
+          };
+        };
+        fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
+        statusCommand =
+          "i3status-rs ~/.config/i3status-rust/config-default.toml";
+      }];
       fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
     };
   };
