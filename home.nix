@@ -22,44 +22,50 @@ let
   bright_magenta = "#CC00FF";
   bright_cyan = "#00FFFF";
   bright_white = "#FFFFFF";
+
+  rust = pkgs.callPackage ./rust.nix { };
 in {
   programs.home-manager.enable = true;
 
   home.username = "odanba";
   home.homeDirectory = "/home/odanba";
 
-  home.packages = with pkgs; [
-    alacritty
-    # TODO: Clementine keeps breaking builds
-    #clementine
-    discord
-    drive
-    exa
-    fd
-    feh
-    firefox
-    font-awesome
-    git
-    gnome3.gnome-calculator
-    i3lock-fancy
-    keepass
-    libreoffice-fresh
-    maim
-    nixfmt
-    noto-fonts
-    noto-fonts-cjk
-    pavucontrol
-    pcmanfm
-    playerctl
-    powerline-fonts
-    powerline-go
-    qbittorrent
-    rofi
-    vlc
-    vscode
-    xclip
-    xdotool
-  ];
+  home.sessionVariables = rust.sessionVariables;
+
+  home.packages = with pkgs;
+    [
+      alacritty
+      # TODO: Clementine keeps breaking builds
+      #clementine
+      clang_11
+      discord
+      drive
+      exa
+      fd
+      feh
+      firefox
+      font-awesome
+      git
+      gnome3.gnome-calculator
+      i3lock-fancy
+      keepass
+      libreoffice-fresh
+      maim
+      nixfmt
+      noto-fonts
+      noto-fonts-cjk
+      pavucontrol
+      pcmanfm
+      playerctl
+      powerline-fonts
+      powerline-go
+      qbittorrent
+      rofi
+      vlc
+      vscode
+      xclip
+      xdotool
+    ] ++ rust.pkgs;
 
   fonts.fontconfig.enable = true;
 
