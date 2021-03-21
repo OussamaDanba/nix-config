@@ -34,7 +34,6 @@ in {
 
   home.packages = with pkgs;
     [
-      alacritty
       # TODO: Clementine keeps breaking builds
       #clementine
       clang_11
@@ -42,10 +41,7 @@ in {
       drive
       exa
       fd
-      feh
-      firefox
       font-awesome
-      git
       gnome3.gnome-calculator
       i3lock-fancy
       keepass
@@ -58,13 +54,10 @@ in {
       pcmanfm
       playerctl
       powerline-fonts
-      powerline-go
       qbittorrent
-      rofi
       vlc
       vscode
       xclip
-      xdotool
     ] ++ rust.pkgs;
 
   fonts.fontconfig.enable = true;
