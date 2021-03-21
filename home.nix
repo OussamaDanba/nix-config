@@ -321,7 +321,8 @@ in {
           notification = false;
         }
         {
-          command = "feh --randomize --bg-fill ~/Pictures/Backgrounds/*";
+          command =
+            "systemd-run --on-calendar='*:0/3' --user -- feh --randomize --bg-max --no-fehbg -r ~/Pictures/Backgrounds";
           always = false;
           notification = false;
         }
