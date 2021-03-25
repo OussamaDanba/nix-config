@@ -15,10 +15,14 @@
       enable = true;
       editor = true; # Default but make clear that this is insecure.
       memtest86.enable = true;
+      configurationLimit = 20;
     };
     timeout = 2;
     efi.canTouchEfiVariables = true;
   };
+
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 7d";
 
   networking = {
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
