@@ -85,6 +85,11 @@ in {
       modules = [ "host" "ssh" "cwd" "gitlite" "nix-shell" ];
     };
 
+    fzf = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+
     git = {
       enable = true;
       lfs.enable = true;
