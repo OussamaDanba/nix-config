@@ -32,6 +32,11 @@
     networkmanager.enable = true;
   };
 
+  # Bluetooth configuration
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  boot.extraModprobeConfig = "options bluetooth disable_ertm=1";
+
   # Everything related to locales and keyboard
   time.timeZone = "Europe/Amsterdam";
   i18n = {
@@ -86,7 +91,7 @@
   };
 
   # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [ htop home-manager memtest86-efi ];
+  environment.systemPackages = with pkgs; [ htop home-manager memtest86-efi xboxdrv ];
 
   # Enable the X11 windowing system.
   services.xserver = {
@@ -105,6 +110,7 @@
   };
 
   programs.dconf.enable = true;
+  programs.steam.enable = true;
 
   # Don't wait on internet connection so we can boot faster
   systemd.services.NetworkManager-wait-online.enable = false;

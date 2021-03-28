@@ -37,6 +37,7 @@ in {
       # TODO: Clementine keeps breaking builds
       #clementine
       clang_11
+      deadbeef
       discord
       drive
       exa
@@ -46,6 +47,7 @@ in {
       i3lock-fancy
       keepass
       libreoffice-fresh
+      lutris
       maim
       nixfmt
       noto-fonts
