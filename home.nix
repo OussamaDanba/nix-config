@@ -34,8 +34,6 @@ in {
 
   home.packages = with pkgs;
     [
-      # TODO: Clementine keeps breaking builds
-      #clementine
       clang_11
       deadbeef
       discord
