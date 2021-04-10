@@ -38,6 +38,7 @@ in {
       deadbeef
       discord
       drive
+      evince
       exa
       fd
       font-awesome
@@ -50,6 +51,7 @@ in {
       nixfmt
       noto-fonts
       noto-fonts-cjk
+      osu-lazer
       pavucontrol
       pcmanfm
       playerctl
@@ -254,8 +256,8 @@ in {
             info_type = "used";
             unit = "GB";
             interval = 60;
-            warning = 80.0;
-            alert = 90.0;
+            warning = 90.0;
+            alert = 95.0;
             format = " {used}/{total} {unit}";
           }
           {
@@ -282,6 +284,7 @@ in {
             format = "{weather} {temp}°C {humidity}% RH";
             service = {
               name = "openweathermap";
+              # Not a security risk. Free non-personal account.
               api_key = "f2308aba9fb59395c4466234d0ab348b";
               city_id = "2750053";
               units = "metric";
