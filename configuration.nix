@@ -91,7 +91,7 @@
   };
 
   # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [ htop home-manager memtest86-efi xboxdrv ];
+  environment.systemPackages = with pkgs; [ htop home-manager memtest86-efi xboxdrv openssl ];
 
   # Enable the X11 windowing system.
   services.xserver = {

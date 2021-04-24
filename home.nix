@@ -44,8 +44,8 @@ in {
       font-awesome
       gnome3.gnome-calculator
       i3lock-fancy
-      keepass
-      libreoffice-fresh
+      keepassxc
+      libreoffice
       lutris
       maim
       nixfmt
