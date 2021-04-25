@@ -48,6 +48,7 @@ in {
       libreoffice
       lutris
       maim
+      myxer
       nixfmt
       noto-fonts
       noto-fonts-cjk
@@ -293,6 +294,7 @@ in {
           {
             block = "sound";
             step_width = 1;
+            on_click = "myxer";
           }
           {
             block = "time";
@@ -383,6 +385,9 @@ in {
       }];
       fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
     };
+    extraConfig = ''
+      for_window [class="Myxer" instance="myxer"] move position mouse
+    '';
   };
 
   services = {
