@@ -38,8 +38,8 @@ in {
       deadbeef
       discord
       drive
+      dtrx
       evince
-      exa
       fd
       font-awesome
       gnome3.gnome-calculator
@@ -75,10 +75,11 @@ in {
         }
       '';
       shellAliases = {
-        ls = "exa";
+        git = "false";
+        lg = "lazygit";
         l = "exa -abhl --git";
         con = "home-manager edit";
-        update = "sudo nix-channel --update";
+        update = "sudo nix-channel --update && nix-channel update";
         upgrade = "sudo nixos-rebuild switch && home-manager switch";
       };
     };
@@ -86,6 +87,11 @@ in {
     powerline-go = {
       enable = true;
       modules = [ "host" "ssh" "cwd" "gitlite" "nix-shell" ];
+    };
+
+    exa = {
+      enable = true;
+      enableAliases = true;
     };
 
     fzf = {
@@ -100,6 +106,8 @@ in {
       userName = "Oussama Danba";
       extraConfig = { init.defaultBranch = "main"; };
     };
+
+    lazygit = { enable = true; };
 
     alacritty = {
       enable = true;
@@ -378,12 +386,20 @@ in {
             text = "${primary_foreground}";
           };
         };
-        fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
+        fonts = {
+          names = [ "FontAwesome" "Noto Sans Mono" ];
+          style = "";
+          size = 10.0;
+        };
         trayOutput = "primary";
         statusCommand =
           "i3status-rs ~/.config/i3status-rust/config-default.toml";
       }];
-      fonts = [ "FontAwesome 10" "Noto Sans Mono 10" ];
+      fonts = {
+        names = [ "FontAwesome" "Noto Sans Mono" ];
+        style = "";
+        size = 10.0;
+      };
     };
     extraConfig = ''
       for_window [class="Myxer" instance="myxer"] move position mouse

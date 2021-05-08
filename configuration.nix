@@ -5,6 +5,9 @@
     ./hardware-configuration.nix
   ];
 
+  # Probably keep it on; doesn't hurt.
+  hardware.nvidia.modesetting.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   # So we can still access windows
