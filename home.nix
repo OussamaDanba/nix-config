@@ -79,7 +79,7 @@ in {
         lg = "lazygit";
         l = "exa -abhl --git";
         con = "home-manager edit";
-        update = "sudo nix-channel --update && nix-channel update";
+        update = "sudo nix-channel --update && nix-channel --update";
         upgrade = "sudo nixos-rebuild switch && home-manager switch";
       };
     };
@@ -267,12 +267,14 @@ in {
             interval = 60;
             warning = 90.0;
             alert = 95.0;
-            format = " {used}/{total} {unit}";
+            format = " {used}/{total}";
           }
           {
             block = "memory";
-            format_mem = "{Mum}/{MTm} ({Mup}%)";
-            format_swap = "{SUm}/{STm} ({SUp}%)";
+            format_mem =
+              "{mem_used:4;G}/{mem_total:4;G} ({mem_used_percents:1})";
+            format_swap =
+              "{swap_used:4;G}/{swap_total:4;G} ({swap_used_percents:1})";
           }
           {
             block = "nvidia_gpu";
@@ -285,12 +287,11 @@ in {
           {
             block = "net";
             format = "{ip}";
-            # TODO: Enable when package has been updated (only on upstream right now)
-            #format_alt = "{speed_up} {speed_down}";
+            format_alt = "{speed_up;M*b} {speed_down;M*b}";
           }
           {
             block = "weather";
-            format = "{weather} {temp}°C {humidity}% RH";
+            format = "{weather} {temp}C{wind_kmh}km/u";
             service = {
               name = "openweathermap";
               # Not a security risk. Free non-personal account.
