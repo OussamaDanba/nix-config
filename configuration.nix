@@ -24,6 +24,9 @@
     efi.canTouchEfiVariables = true;
   };
 
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" ];
+
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 7d";
 
