@@ -76,7 +76,7 @@ in {
       '';
       shellAliases = {
         git = "false";
-        lg = "lazygit";
+        lg = "LANG=en_US.UTF-8 lazygit";
         l = "exa -abhl --git";
         con = "home-manager edit";
         update = "sudo nix-channel --update && nix-channel --update";
@@ -107,7 +107,10 @@ in {
       extraConfig = { init.defaultBranch = "main"; };
     };
 
-    lazygit = { enable = true; };
+    lazygit = {
+      enable = true;
+      settings = { gui.showCommandLog = false; };
+    };
 
     alacritty = {
       enable = true;
