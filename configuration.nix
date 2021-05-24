@@ -136,6 +136,35 @@
     steam.enable = true;
   };
 
+  services.minecraft-server = {
+    enable = false;
+    eula = true;
+    declarative = true;
+
+    serverProperties = {
+      server-port = 25565;
+      gamemode = "survival";
+      motd = "ree";
+      enable-rcon = true;
+      "rcon.password" = "lul";
+      enable-command-block = true;
+      pvp = false;
+      spawn-npcs = true;
+      spawn-animals = true;
+      view-distance = 10;
+      spawn-protection = 3;
+      difficulty = "normal";
+    };
+    openFirewall = true;
+  };
+
+  networking.firewall = {
+    enable = true;
+
+    allowedTCPPorts = [ 25565 ];
+  };
+
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

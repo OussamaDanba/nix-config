@@ -48,6 +48,7 @@ in {
       libreoffice
       lutris
       maim
+      minecraft
       myxer
       nixfmt
       noto-fonts
@@ -58,6 +59,7 @@ in {
       playerctl
       powerline-fonts
       qbittorrent
+      unzip
       vlc
       vscode
       xclip
