@@ -31,9 +31,10 @@
   };
 
   fileSystems."/mnt/secondary" = {
-    device = "/dev/disk/by-uuid/56FE6022FE5FF8A7";
+    device = "/dev/disk/by-uuid/0982671261F77150";
     fsType = "ntfs";
     mountPoint = "/mnt/secondary";
+    options = [ "defaults" "user" "rw" "utf8" "uid=1000" "gid=100" "umask=000" ];
   };
 
   networking = {
