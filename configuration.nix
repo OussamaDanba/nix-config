@@ -2,29 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  # Hyper colors
-  primary_background = "#000000";
-  primary_foreground = "#FFFFFF";
-  cursor_text = "#F81CE5";
-  cursor_cursor = "#FFFFFF";
-  normal_black = "#000000";
-  normal_red = "#FE0100";
-  normal_green = "#33FF00";
-  normal_yellow = "#FEFF00";
-  normal_blue = "#0066FF";
-  normal_magenta = "#CC00FF";
-  normal_cyan = "#00FFFF";
-  normal_white = "#D0D0D0";
-  bright_black = "#808080";
-  bright_red = "#FE0100";
-  bright_green = "#33FF00";
-  bright_yellow = "#FEFF00";
-  bright_blue = "#0066FF";
-  bright_magenta = "#CC00FF";
-  bright_cyan = "#00FFFF";
-  bright_white = "#FFFFFF";
-in {
+}: {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
@@ -38,7 +16,7 @@ in {
         enable = true;
         editor = true; # Default but make clear that this is insecure.
         memtest86.enable = true;
-        configurationLimit = 20;
+        configurationLimit = 10;
       };
       timeout = 3;
       efi.canTouchEfiVariables = true;
@@ -61,7 +39,7 @@ in {
 
   # Select internationalisation properties.
   i18n = {
-    defaultLocale = "en_GB.UTF-8";
+    defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = "nl_NL.UTF-8";
       LC_IDENTIFICATION = "nl_NL.UTF-8";
@@ -144,15 +122,16 @@ in {
       packages = with pkgs;
         [
           alejandra
+          atool
           discord
+          fd
           firefox
+          google-drive-ocamlfuse
           helvum
           keepassxc
+          libreoffice-fresh
           qbittorrent
           vlc
-          fd
-          atool
-          google-drive-ocamlfuse
         ]
         ++ (with pkgs.gnomeExtensions; [
           appindicator
@@ -202,32 +181,32 @@ in {
         selection = {save_to_clipboard = true;};
         colors = {
           primary = {
-            background = "${primary_background}";
-            foreground = "${primary_foreground}";
+            background = "#000000";
+            foreground = "#FFFFFF";
           };
           cursor = {
-            text = "${cursor_text}";
-            cursor = "${cursor_cursor}";
+            text = "#F81CE5";
+            cursor = "#FFFFFF";
           };
           normal = {
-            black = "${normal_black}";
-            red = "${normal_red}";
-            green = "${normal_green}";
-            yellow = "${normal_yellow}";
-            blue = "${normal_blue}";
-            magenta = "${normal_magenta}";
-            cyan = "${normal_cyan}";
-            white = "${normal_white}";
+            black = "#000000";
+            red = "#FE0100";
+            green = "#33FF00";
+            yellow = "#FEFF00";
+            blue = "#0066FF";
+            magenta = "#CC00FF";
+            cyan = "#00FFFF";
+            white = "#D0D0D0";
           };
           bright = {
-            black = "${bright_black}";
-            red = "${bright_red}";
-            green = "${bright_green}";
-            yellow = "${bright_yellow}";
-            blue = "${bright_blue}";
-            magent = "${bright_magenta}";
-            cyan = "${bright_cyan}";
-            white = "${bright_white}";
+            black = "#808080";
+            red = "#FE0100";
+            green = "#33FF00";
+            yellow = "#FEFF00";
+            blue = "#0066FF";
+            magent = "#CC00FF";
+            cyan = "#00FFFF";
+            white = "#FFFFFF";
           };
         };
         key_bindings = [
