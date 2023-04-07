@@ -39,7 +39,7 @@
 
   # Select internationalisation properties.
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = "en_GB.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = "nl_NL.UTF-8";
       LC_IDENTIFICATION = "nl_NL.UTF-8";
@@ -82,12 +82,6 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # Enable libinput
-  services.xserver.libinput = {
-    enable = true;
-    mouse.accelProfile = "flat";
-    mouse.accelSpeed = "0.0";
-  };
 
   users.defaultUserShell = pkgs.fish;
 
