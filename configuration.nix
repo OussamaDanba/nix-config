@@ -124,6 +124,7 @@
           helvum
           keepassxc
           libreoffice-fresh
+          lutris
           qbittorrent
           vlc
         ]
@@ -283,6 +284,18 @@
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  services.openssh = {
+    enable = false;
+    passwordAuthentication = true;
+    kbdInteractiveAuthentication = true;
+    #permitRootLogin = "yes";
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 
   system.stateVersion = "22.11";
 }
