@@ -22,6 +22,8 @@
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot/efi";
     };
+    # So we can mount Windows drives
+    supportedFilesystems = ["ntfs"];
   };
 
   services.xserver.videoDrivers = ["nvidia"];
