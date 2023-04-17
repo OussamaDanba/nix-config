@@ -32,7 +32,7 @@
   hardware.nvidia.modesetting.enable = true;
 
   networking = {
-    hostName = "sothatwemaybefree";
+    hostName = "danba-oussama-pqshield";
     networkmanager.enable = true;
   };
 
@@ -129,6 +129,13 @@
           lutris
           qbittorrent
           vlc
+          # ascension wow
+          wineWowPackages.waylandFull
+          winetricks
+          mono
+          dxvk
+          wget
+          appimage-run
         ]
         ++ (with pkgs.gnomeExtensions; [
           appindicator

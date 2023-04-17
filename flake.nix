@@ -1,5 +1,5 @@
 {
-  description = "O Danba's awesome nix configuration";
+  description = "Nix machines";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
@@ -17,7 +17,14 @@
       system = "x86_64-linux";
       modules = [
         home.nixosModules.home-manager
-        ./configuration.nix
+        ./sothatwemaybefree/configuration.nix
+      ];
+    };
+    nixosConfigurations.danba-oussama-pqshield = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        home.nixosModules.home-manager
+        ./danba-oussama-pqshield/configuration.nix
       ];
     };
   };
