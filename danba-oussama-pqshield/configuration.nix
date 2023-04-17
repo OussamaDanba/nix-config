@@ -119,23 +119,12 @@
         [
           alejandra
           atool
-          discord
           fd
           firefox
-          google-drive-ocamlfuse
           helvum
           keepassxc
           libreoffice-fresh
-          lutris
-          qbittorrent
           vlc
-          # ascension wow
-          wineWowPackages.waylandFull
-          winetricks
-          mono
-          dxvk
-          wget
-          appimage-run
         ]
         ++ (with pkgs.gnomeExtensions; [
           appindicator
