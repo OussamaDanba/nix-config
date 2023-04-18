@@ -17,14 +17,14 @@
       system = "x86_64-linux";
       modules = [
         home.nixosModules.home-manager
-        ./sothatwemaybefree/configuration.nix
+        ./machines/sothatwemaybefree/configuration.nix
       ];
     };
     nixosConfigurations.danba-oussama-pqshield = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         home.nixosModules.home-manager
-        ./danba-oussama-pqshield/configuration.nix
+        ./machines/danba-oussama-pqshield/configuration.nix
       ];
     };
   };
