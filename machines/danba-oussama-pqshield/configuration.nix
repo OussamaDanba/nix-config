@@ -54,5 +54,9 @@
     };
   };
 
+  # Virtualbox for Vivado
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = ["odanba"];
+
   system.stateVersion = "22.11";
 }
