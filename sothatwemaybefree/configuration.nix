@@ -74,9 +74,9 @@
     };
 
     openssh = {
-      enable = false;
-      passwordAuthentication = true;
-      kbdInteractiveAuthentication = true;
+      enable = true;
+      passwordAuthentication = false;
+      kbdInteractiveAuthentication = false;
     };
   };
 
