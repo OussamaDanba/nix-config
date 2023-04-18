@@ -13,8 +13,10 @@
   home.packages = with pkgs; [
     atool
     fd
+    pciutils
     python3Full
     ripgrep
     tree
+    usbutils
   ];
 }
