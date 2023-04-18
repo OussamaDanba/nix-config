@@ -18,7 +18,6 @@
       modules = [
         home.nixosModules.home-manager
         ./sothatwemaybefree/configuration.nix
-        ./alacritty.nix
       ];
     };
     nixosConfigurations.danba-oussama-pqshield = nixpkgs.lib.nixosSystem {
@@ -26,7 +25,6 @@
       modules = [
         home.nixosModules.home-manager
         ./danba-oussama-pqshield/configuration.nix
-        ./alacritty.nix
       ];
     };
   };

@@ -4,13 +4,12 @@
   lib,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
     ./hardware-configuration.nix
+    ../common.nix
   ];
 
-  # Bootloader.
+  # Bootloader
   boot = {
     loader = {
       systemd-boot = {
@@ -25,98 +24,21 @@
     };
   };
 
-  networking = {
-    hostName = "danba-oussama-pqshield";
-    networkmanager.enable = true;
-    useDHCP = lib.mkDefault true;
-  };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Amsterdam";
-
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_GB.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "nl_NL.UTF-8";
-      LC_IDENTIFICATION = "nl_NL.UTF-8";
-      LC_MEASUREMENT = "nl_NL.UTF-8";
-      LC_MONETARY = "nl_NL.UTF-8";
-      LC_NAME = "nl_NL.UTF-8";
-      LC_NUMERIC = "nl_NL.UTF-8";
-      LC_PAPER = "nl_NL.UTF-8";
-      LC_TELEPHONE = "nl_NL.UTF-8";
-      LC_TIME = "nl_NL.UTF-8";
-    };
-  };
-
-  services = {
-    xserver = {
-      enable = true;
-      # Configure keymap in X11
-      layout = "us";
-      xkbVariant = "euro";
-      # Enable GNOME
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-      desktopManager.xterm.enable = false;
-    };
-
-    # Enable CUPS to print documents.
-    printing.enable = true;
-
-    # Enable Avahi for detection of hosts
-    avahi = {
-      enable = true;
-      nssmdns = true;
-    };
-
-    openssh = {
-      enable = true;
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
-    };
-  };
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  users.defaultUserShell = pkgs.fish;
-
-  # Define a user account.
+  # User account
   users.users.odanba = {
     isNormalUser = true;
     description = "Oussama Danba";
     extraGroups = ["networkmanager" "wheel"];
   };
+  networking.hostName = "danba-oussama-pqshield";
 
-  home-manager.useGlobalPkgs = true;
+  # Programs
   home-manager.users.odanba = {pkgs, ...}: {
-    home.stateVersion = "22.11";
-    programs.fish = {
-      enable = true;
-      interactiveShellInit = ''
-        ${pkgs.starship}/bin/starship init fish | source
-      '';
-      plugins = with pkgs.fishPlugins; [
-        (with fzf-fish; {inherit name src;})
-        (with done; {inherit name src;})
-      ];
-      shellAliases = {
-        lg = "lazygit";
-        e = "exa -abhl --git";
-        ls = "exa";
-        l = "e";
-      };
-    };
+    imports = [
+      ../home-manager/alacritty.nix
+      ../home-manager/fish.nix
+    ];
+
     home = {
       packages = with pkgs;
         [
@@ -133,7 +55,10 @@
           dash-to-panel
           just-perfection
         ]);
+
+      stateVersion = "22.11";
     };
+
     programs.vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions;
@@ -164,23 +89,15 @@
       userName = "Oussama Danba";
       extraConfig = {init.defaultBranch = "main";};
     };
-
-    programs.fzf = {
-      enable = true;
-      enableBashIntegration = true;
-      # Fish integration is disabled in favour of the fzf fish plugin. As per this statement from that project's README:
-      # Note that the fzf utility has its own out-of-the-box fish package. What
-      # sets this package apart is that it has a couple more integrations, most
-      # notably tab completion, and will probably be updated more frequently. They
-      # are not compatible so either use one or the other.
-      #enableFishIntegration = true;
-    };
   };
 
-  environment.systemPackages = with pkgs; [
-    htop
-  ];
-
+  # GNOME specific
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+    desktopManager.xterm.enable = false;
+  };
   environment.gnome.excludePackages =
     (with pkgs; [
       epiphany
@@ -198,13 +115,6 @@
       totem
       yelp
     ]);
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   system.stateVersion = "22.11";
 }
