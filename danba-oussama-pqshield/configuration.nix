@@ -22,14 +22,9 @@
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot/efi";
     };
-    # So we can mount Windows drives
-    supportedFilesystems = ["ntfs"];
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.modesetting.enable = true;
 
   networking = {
     hostName = "danba-oussama-pqshield";
@@ -124,7 +119,6 @@
           helvum
           keepassxc
           libreoffice-fresh
-          vlc
         ]
         ++ (with pkgs.gnomeExtensions; [
           appindicator
@@ -132,11 +126,6 @@
           just-perfection
         ]);
     };
-    xdg.configFile."discord/settings.json".text = ''
-      {
-        "SKIP_HOST_UPDATE": true
-      }
-    '';
     programs.vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions;
@@ -251,8 +240,6 @@
       #enableFishIntegration = true;
     };
   };
-
-  programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     htop
