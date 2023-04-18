@@ -52,22 +52,33 @@
     };
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      # Configure keymap in X11
+      layout = "us";
+      xkbVariant = "euro";
+      # Enable GNOME
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      desktopManager.xterm.enable = false;
+    };
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.desktopManager.xterm.enable = false;
+    # Enable CUPS to print documents.
+    printing.enable = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "euro";
+    # Enable Avahi for detection of hosts
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+
+    openssh = {
+      enable = false;
+      passwordAuthentication = true;
+      kbdInteractiveAuthentication = true;
+    };
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -105,10 +116,9 @@
       ];
       shellAliases = {
         lg = "lazygit";
-        # Om 't af te leren
-        ls = "false";
-        l = "false";
         e = "exa -abhl --git";
+        ls = "exa";
+        l = "e";
       };
     };
     home = {
@@ -219,18 +229,6 @@
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  services.openssh = {
-    enable = false;
-    passwordAuthentication = true;
-    kbdInteractiveAuthentication = true;
-    #permitRootLogin = "yes";
-  };
-
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-  };
 
   system.stateVersion = "22.11";
 }
