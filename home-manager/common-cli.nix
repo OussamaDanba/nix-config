@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     atool
     fd
+    python3Full
     ripgrep
     tree
   ];
