@@ -7,8 +7,8 @@
     enable = true;
     extensions = with pkgs.vscode-extensions;
       [
-        bbenoist.nix
-        kamadorueda.alejandra
+        jnoortheen.nix-ide
+        usernamehw.errorlens
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -25,11 +25,24 @@
         "editorInlayHint.foreground" = "#666666FF";
       };
       "editor.cursorStyle" = "block";
+      "editor.formatOnSave" = true;
       "workbench.startupEditor" = "none";
       "explorer.confirmDragAndDrop" = false;
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
+      "nix.serverSettings" = {
+        "nil" = {
+          "formatting" = {
+            "command" = ["alejandra"];
+          };
+        };
+      };
+      "editor.renderWhitespace" = "all";
     };
   };
+
   home.packages = with pkgs; [
     alejandra
+    nil
   ];
 }
