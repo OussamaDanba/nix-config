@@ -17,6 +17,7 @@
     python3Full
     ripgrep
     tree
+    unzip
     usbutils
   ];
 }
