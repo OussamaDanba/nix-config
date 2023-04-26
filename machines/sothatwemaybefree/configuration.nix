@@ -22,6 +22,7 @@
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot/efi";
     };
+    supportedFilesystems = ["ntfs"];
   };
 
   # User account
