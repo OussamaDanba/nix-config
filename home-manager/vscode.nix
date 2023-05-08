@@ -12,6 +12,7 @@
         jnoortheen.nix-ide
         ms-vscode.cpptools
         usernamehw.errorlens
+        xaver.clang-format
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -42,6 +43,10 @@
       };
       "editor.renderWhitespace" = "all";
       "extensions.ignoreRecommendations" = true;
+      "explorer.confirmDelete" = false;
+      "[c]" = {
+        "editor.defaultFormatter" = "xaver.clang-format";
+      };
     };
   };
 
