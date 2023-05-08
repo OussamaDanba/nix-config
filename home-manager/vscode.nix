@@ -5,6 +5,8 @@
 }: {
   programs.vscode = {
     enable = true;
+    enableExtensionUpdateCheck = false;
+    enableUpdateCheck = false;
     extensions = with pkgs.vscode-extensions;
       [
         jnoortheen.nix-ide
@@ -39,6 +41,7 @@
         };
       };
       "editor.renderWhitespace" = "all";
+      "extensions.ignoreRecommendations" = true;
     };
   };
 
