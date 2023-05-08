@@ -37,6 +37,7 @@
     imports = [
       ../../home-manager/common-cli.nix
       ../../home-manager/common-gui.nix
+      ../../home-manager/dev-tools-cli.nix
       ../../home-manager/gnome-extensions.nix
     ];
 

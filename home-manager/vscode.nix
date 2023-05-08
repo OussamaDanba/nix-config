@@ -8,6 +8,7 @@
     extensions = with pkgs.vscode-extensions;
       [
         jnoortheen.nix-ide
+        ms-vscode.cpptools
         usernamehw.errorlens
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
