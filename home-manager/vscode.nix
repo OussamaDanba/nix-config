@@ -11,6 +11,7 @@
       [
         jnoortheen.nix-ide
         ms-vscode.cpptools
+        redhat.vscode-yaml
         usernamehw.errorlens
         xaver.clang-format
       ]
@@ -48,6 +49,7 @@
         "editor.defaultFormatter" = "xaver.clang-format";
       };
       "editor.rulers" = [80 100 120];
+      "redhat.telemetry.enabled" = false;
     };
   };
 
