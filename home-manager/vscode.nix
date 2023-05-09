@@ -47,6 +47,7 @@
       "[c]" = {
         "editor.defaultFormatter" = "xaver.clang-format";
       };
+      "editor.rulers" = [80 100 120];
     };
   };
 
