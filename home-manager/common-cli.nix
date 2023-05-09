@@ -16,6 +16,7 @@
     file
     pciutils
     python3Full
+    python3Packages.pip
     ripgrep
     tree
     unzip
