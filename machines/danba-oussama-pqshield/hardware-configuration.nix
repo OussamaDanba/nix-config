@@ -16,6 +16,17 @@
     };
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
+    # kernelPatches = [
+    #   {
+    #     name = "gcov-config";
+    #     patch = null;
+    #     extraConfig = ''
+    #       DEBUG_FS y
+    #       GCOV_KERNEL y
+    #       GCOV_PROFILE_ALL y
+    #     '';
+    #   }
+    # ];
   };
 
   fileSystems."/" = {
@@ -33,7 +44,7 @@
   swapDevices = [
     {
       device = "/swapfile";
-      size = 16384;
+      size = 8192;
     }
   ];
 

@@ -43,6 +43,7 @@
 
     home = {
       packages = with pkgs; [
+        google-chrome
         python3Packages.pyserial
         slack
       ];
