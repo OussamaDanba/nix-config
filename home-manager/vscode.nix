@@ -11,6 +11,7 @@
       [
         jnoortheen.nix-ide
         ms-vscode.cpptools
+        ms-vsliveshare.vsliveshare
         redhat.vscode-yaml
         usernamehw.errorlens
         xaver.clang-format
