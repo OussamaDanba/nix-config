@@ -60,12 +60,6 @@
       stateVersion = "22.11";
     };
 
-    xdg.configFile."discord/settings.json".text = ''
-      {
-        "SKIP_HOST_UPDATE": true
-      }
-    '';
-
     programs.git = {
       userEmail = "oussama@danba.nl";
       userName = "Oussama Danba";

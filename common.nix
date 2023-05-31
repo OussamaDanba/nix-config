@@ -76,6 +76,7 @@
       htop
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
+    sessionVariables.QT_QPA_PLATFORM = "wayland";
   };
 
   programs.fish.enable = true;
