@@ -47,8 +47,10 @@
 
     openssh = {
       enable = true;
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
     };
 
     # Configure keymap in X11 but don't decide whether we use X or not.
@@ -76,5 +78,6 @@
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
+  programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 }
