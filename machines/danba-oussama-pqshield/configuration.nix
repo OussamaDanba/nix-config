@@ -18,7 +18,7 @@
         memtest86.enable = true;
         configurationLimit = 10;
       };
-      timeout = 3;
+      timeout = 1;
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot/efi";
     };
