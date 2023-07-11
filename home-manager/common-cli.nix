@@ -21,5 +21,6 @@
     tree
     unzip
     usbutils
+    wireguard-tools
   ];
 }
