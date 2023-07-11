@@ -10,9 +10,11 @@
     extensions = with pkgs.vscode-extensions;
       [
         jnoortheen.nix-ide
-        ms-vscode.cpptools
+        ms-vscode.cmake-tools
+        # ms-vscode.cpptools # Broken currently because it downloads a binary
         ms-vsliveshare.vsliveshare
         redhat.vscode-yaml
+        twxs.cmake
         usernamehw.errorlens
         xaver.clang-format
       ]
