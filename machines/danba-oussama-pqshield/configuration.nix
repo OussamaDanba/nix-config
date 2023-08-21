@@ -46,6 +46,7 @@
         google-chrome
         python3Packages.pyserial
         slack
+        sshfs
       ];
 
       stateVersion = "22.11";
