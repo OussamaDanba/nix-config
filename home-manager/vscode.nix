@@ -53,6 +53,8 @@
       };
       "editor.rulers" = [80 100 120];
       "redhat.telemetry.enabled" = false;
+      "files.insertFinalNewline" = true;
+      "files.trimFinalNewlines" = true;
     };
   };
 
