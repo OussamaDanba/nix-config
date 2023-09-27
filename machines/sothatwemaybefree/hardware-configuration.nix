@@ -10,9 +10,10 @@
   ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
-      kernelModules = [];
+      availableKernelModules = ["amdgpu" "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
+      kernelModules = ["amdgpu"];
     };
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
@@ -43,12 +44,8 @@
       driSupport = true;
       driSupport32Bit = true;
     };
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      modesetting.enable = true;
-    };
   };
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
