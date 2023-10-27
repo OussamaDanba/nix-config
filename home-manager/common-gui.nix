@@ -9,6 +9,7 @@
   ];
 
   home.packages = with pkgs; [
+    element-desktop
     firefox
     helvum
     keepassxc
