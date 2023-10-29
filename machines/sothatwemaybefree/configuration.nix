@@ -47,6 +47,7 @@
         discord
         google-drive-ocamlfuse
         lutris
+        nvtop-amd
         qbittorrent
         # ascension
         appimage-run
