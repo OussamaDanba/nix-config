@@ -28,7 +28,7 @@
   users.users.odanba = {
     isNormalUser = true;
     description = "Oussama Danba";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "wireshark"];
   };
   networking.hostName = "danba-oussama-pqshield";
 

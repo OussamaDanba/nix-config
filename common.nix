@@ -71,9 +71,11 @@
     pulse.enable = true;
   };
 
+  programs.wireshark.enable = true;
   environment = {
     systemPackages = with pkgs; [
       htop
+      wireshark
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
     sessionVariables.QT_QPA_PLATFORM = "wayland";
