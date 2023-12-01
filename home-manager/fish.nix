@@ -14,8 +14,8 @@
     ];
     shellAliases = {
       lg = "lazygit";
-      e = "exa -abhlg --git";
-      ls = "exa";
+      e = "eza -abhlg --git";
+      ls = "eza";
       l = "e";
     };
   };

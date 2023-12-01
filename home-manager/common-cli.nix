@@ -8,7 +8,7 @@
     ./git.nix
   ];
 
-  programs.exa.enable = true;
+  programs.eza.enable = true;
 
   home.packages = with pkgs; [
     atool
