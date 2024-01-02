@@ -62,5 +62,10 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["odanba"];
 
+  services.udev.extraRules = ''
+    ATTR{idVendor}=="1443", MODE:="666"
+    ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", MODE:="666"
+  '';
+
   system.stateVersion = "22.11";
 }
