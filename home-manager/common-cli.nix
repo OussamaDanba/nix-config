@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   imports = [
     ./fish.nix
@@ -21,6 +20,7 @@
     tree
     unzip
     usbutils
+    wally-cli
     wireguard-tools
   ];
 
