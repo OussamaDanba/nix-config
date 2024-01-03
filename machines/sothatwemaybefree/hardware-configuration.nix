@@ -44,6 +44,8 @@
       driSupport = true;
       driSupport32Bit = true;
     };
+
+    keyboard.zsa.enable = true;
   };
   services.xserver.videoDrivers = ["amdgpu"];
 
