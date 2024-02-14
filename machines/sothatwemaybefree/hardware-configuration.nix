@@ -17,6 +17,7 @@
     };
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
+    kernelParams = ["amd_pstate=active"];
   };
 
   fileSystems."/" = {
