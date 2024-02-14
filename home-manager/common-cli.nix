@@ -1,6 +1,7 @@
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }: {
   imports = [
     ./fish.nix
@@ -8,6 +9,7 @@
   ];
 
   programs.eza.enable = true;
+  programs.direnv.enable = true;
 
   home.packages = with pkgs; [
     atool

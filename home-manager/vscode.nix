@@ -17,6 +17,8 @@
         twxs.cmake
         usernamehw.errorlens
         xaver.clang-format
+        rust-lang.rust-analyzer
+        mkhl.direnv
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
