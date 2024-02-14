@@ -7,6 +7,7 @@
     enable = true;
     lfs.enable = true;
     extraConfig = {init.defaultBranch = "main";};
+    ignores = [".vscode" ".direnv"];
   };
 
   programs.lazygit = {
