@@ -14,6 +14,7 @@
     helvum
     keepassxc
     libreoffice-fresh
+    pinta
     vlc
   ];
 }
