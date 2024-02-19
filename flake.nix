@@ -27,5 +27,12 @@
         ./machines/danba-oussama-pqshield/configuration.nix
       ];
     };
+    nixosConfigurations.vale = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        home.nixosModules.home-manager
+        ./machines/vale/configuration.nix
+      ];
+    };
   };
 }
