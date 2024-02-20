@@ -72,9 +72,5 @@
 
   programs.steam.enable = true;
 
-  services.unifi.enable = true;
-  services.unifi.openFirewall = true;
-  services.unifi.unifiPackage = pkgs.unifi;
-
   system.stateVersion = "22.11";
 }

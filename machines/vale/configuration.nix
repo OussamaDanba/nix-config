@@ -55,6 +55,12 @@
     };
   };
 
+  services.unifi.enable = true;
+  services.unifi.openFirewall = true;
+  services.unifi.unifiPackage = pkgs.unifi;
+  # Explicitly specify otherwise we end up building mongodb???
+  services.unifi.mongodbPackage = pkgs.mongodb-4_4;
+
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
 
