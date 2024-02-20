@@ -5,8 +5,11 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../common.nix
-    ../../gnome.nix
+    ../../extras/audio.nix
+    ../../extras/common.nix
+    ../../extras/cups.nix
+    ../../extras/gnome.nix
+    ../../extras/wireshark.nix
   ];
 
   # Bootloader

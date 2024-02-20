@@ -36,21 +36,10 @@
   };
 
   services = {
-    # Enable CUPS to print documents.
-    printing.enable = true;
-
     # Enable Avahi for detection of hosts
     avahi = {
       enable = true;
       nssmdns = true;
-    };
-
-    openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-      };
     };
 
     # Configure keymap in X11 but don't decide whether we use X or not.
@@ -60,22 +49,9 @@
     };
   };
 
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  programs.wireshark.enable = true;
   environment = {
     systemPackages = with pkgs; [
       htop
-      wireshark
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
     sessionVariables.QT_QPA_PLATFORM = "wayland";

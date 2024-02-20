@@ -5,7 +5,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../common.nix
+    ../../extras/common.nix
+    ../../extras/openssh.nix
   ];
 
   # Bootloader
@@ -26,7 +27,7 @@
   users.users.odanba = {
     isNormalUser = true;
     description = "Oussama Danba";
-    extraGroups = ["networkmanager" "wheel" "wireshark"];
+    extraGroups = ["networkmanager" "wheel"];
   };
   networking.hostName = "vale";
 

@@ -5,8 +5,11 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../common.nix
-    ../../gnome.nix
+    ../../extras/audio.nix
+    ../../extras/common.nix
+    ../../extras/cups.nix
+    ../../extras/gnome.nix
+    ../../extras/wireshark.nix
   ];
 
   # Bootloader
@@ -62,6 +65,7 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["odanba"];
 
+  # udev rules for Arty board
   services.udev.extraRules = ''
     ATTR{idVendor}=="1443", MODE:="666"
     ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", MODE:="666"
