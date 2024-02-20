@@ -23,6 +23,9 @@
     };
   };
 
+  # Run powertop autotune on startup
+  powerManagement.powertop.enable = true;
+
   # User account
   users.users.odanba = {
     isNormalUser = true;
