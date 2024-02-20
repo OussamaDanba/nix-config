@@ -12,6 +12,7 @@
     element-desktop
     firefox
     helvum
+    jellyfin-media-player
     keepassxc
     libreoffice-fresh
     pinta
