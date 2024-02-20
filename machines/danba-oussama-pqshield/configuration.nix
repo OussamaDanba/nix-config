@@ -71,5 +71,24 @@
     ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", MODE:="666"
   '';
 
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      autostart = false;
+      address = ["10.27.0.3/32" "fdc9:281f:04d7:9ee9::3/128"];
+      dns = ["1.1.1.1" "8.8.8.8"];
+      privateKeyFile = "/home/odanba/wireguard-keys/private_key";
+
+      peers = [
+        {
+          publicKey = "aQ0xUKwN2zlVJrxM5O4w2LsM7V1a8DOYeFqudLZuvx8=";
+          presharedKeyFile = "/home/odanba/wireguard-keys/psk";
+          allowedIPs = ["0.0.0.0/0" "::/0"];
+          endpoint = "thuis.danba.nl:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
+
   system.stateVersion = "22.11";
 }
