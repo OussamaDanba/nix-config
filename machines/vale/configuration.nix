@@ -84,6 +84,8 @@
     allowedTCPPorts = [
       # qbittorrent-nox. Modified from 8080 as Unifi uses it.
       4321
+      # Home Assistant
+      8123
       # Unifi GUI
       8443
     ];
@@ -135,6 +137,19 @@
           presharedKeyFile = "/home/odanba/wireguard-keys/peer2_psk";
           allowedIPs = ["10.27.0.3/32" "fdc9:281f:04d7:9ee9::3/128"];
         }
+      ];
+    };
+  };
+
+  virtualisation.oci-containers = {
+    backend = "podman";
+    containers.homeassistant = {
+      volumes = ["home-assistant:/config"];
+      environment.TZ = "Europe/Amsterdam";
+      # Note: Tag needs to change in order for it to be updated
+      image = "ghcr.io/home-assistant/home-assistant:2024.2.2";
+      extraOptions = [
+        "--network=host"
       ];
     };
   };
