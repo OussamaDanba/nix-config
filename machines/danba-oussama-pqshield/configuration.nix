@@ -73,7 +73,6 @@
 
   networking.wg-quick.interfaces = {
     wg0 = {
-      autostart = false;
       address = ["10.27.0.3/32" "fdc9:281f:04d7:9ee9::3/128"];
       dns = ["1.1.1.1" "8.8.8.8"];
       privateKeyFile = "/home/odanba/wireguard-keys/private_key";
