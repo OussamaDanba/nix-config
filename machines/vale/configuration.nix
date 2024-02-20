@@ -53,11 +53,29 @@
 
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
+
+  systemd = {
+    packages = [pkgs.qbittorrent-nox];
+    services."qbittorrent-nox@odanba" = {
+      overrideStrategy = "asDropin";
+      wantedBy = ["multi-user.target"];
+    };
+  };
+
   environment.systemPackages = [
     pkgs.jellyfin
     pkgs.jellyfin-web
     pkgs.jellyfin-ffmpeg
+    pkgs.qbittorrent-nox
   ];
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      # qbittorrent-nox
+      8080
+    ];
+  };
 
   system.stateVersion = "23.11";
 }
