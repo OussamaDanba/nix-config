@@ -80,8 +80,10 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      # qbittorrent-nox. Modified from 8080
+      # qbittorrent-nox. Modified from 8080 as Unifi uses it.
       4321
+      # Unifi GUI
+      8443
     ];
     allowedUDPPorts = [
       # wireguard
