@@ -37,6 +37,12 @@
     fsType = "vfat";
   };
 
+  fileSystems."/media" = {
+    device = "/dev/disk/by-uuid/24e54ecd-a805-4b56-8a89-577ecbe9e409";
+    fsType = "btrfs";
+    options = ["compress=zstd"];
+  };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
