@@ -55,7 +55,9 @@
     };
   };
 
-  services.unifi.enable = true;
+  # Keeps the server from being able to reach lower sleep states so only enabled
+  # whenever a change is needed.
+  services.unifi.enable = false;
   services.unifi.openFirewall = true;
   services.unifi.unifiPackage = pkgs.unifi;
 
