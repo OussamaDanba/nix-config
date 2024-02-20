@@ -80,8 +80,8 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      # qbittorrent-nox
-      8080
+      # qbittorrent-nox. Modified from 8080
+      4321
     ];
     allowedUDPPorts = [
       # wireguard
