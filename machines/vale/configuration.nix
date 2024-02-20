@@ -43,6 +43,7 @@
 
     home = {
       packages = with pkgs; [
+        powertop
       ];
 
       stateVersion = "23.11";

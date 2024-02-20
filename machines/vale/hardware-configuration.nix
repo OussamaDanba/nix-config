@@ -16,6 +16,7 @@
     };
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
+    kernelParams = ["pcie_aspm=force"];
   };
 
   fileSystems."/" = {
