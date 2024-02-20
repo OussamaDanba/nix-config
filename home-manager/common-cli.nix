@@ -23,7 +23,6 @@
     unzip
     usbutils
     wally-cli
-    wireguard-tools
   ];
 
   programs.helix = {

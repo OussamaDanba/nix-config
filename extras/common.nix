@@ -60,6 +60,7 @@
   environment = {
     systemPackages = with pkgs; [
       htop
+      wireguard-tools
     ];
     sessionVariables.NIXOS_OZONE_WL = "1";
     sessionVariables.QT_QPA_PLATFORM = "wayland";
