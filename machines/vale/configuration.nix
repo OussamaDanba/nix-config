@@ -150,6 +150,8 @@
       image = "ghcr.io/home-assistant/home-assistant:2024.2.2";
       extraOptions = [
         "--network=host"
+        # Needed to make DHCP discovery work
+        "--cap-add=CAP_NET_RAW"
       ];
     };
   };
