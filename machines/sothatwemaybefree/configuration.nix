@@ -76,13 +76,5 @@
   services.unifi.openFirewall = true;
   services.unifi.unifiPackage = pkgs.unifi;
 
-  services.jellyfin.enable = true;
-  services.jellyfin.openFirewall = true;
-  environment.systemPackages = [
-    pkgs.jellyfin
-    pkgs.jellyfin-web
-    pkgs.jellyfin-ffmpeg
-  ];
-
   system.stateVersion = "22.11";
 }
