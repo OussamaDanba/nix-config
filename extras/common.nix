@@ -40,6 +40,14 @@
     avahi = {
       enable = true;
       nssmdns = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        domain = true;
+        hinfo = true;
+        userServices = true;
+        workstation = true;
+      };
     };
 
     # Configure keymap in X11 but don't decide whether we use X or not.
