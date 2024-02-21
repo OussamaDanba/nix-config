@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  eth_interface = "enp0s31f6";
+in {
   imports = [
     ./hardware-configuration.nix
     ../../extras/common.nix
@@ -100,7 +102,7 @@
   networking.nat = {
     enable = true;
     enableIPv6 = true;
-    externalInterface = "enp0s31f6";
+    externalInterface = eth_interface;
     internalInterfaces = ["wg0"];
   };
 
@@ -113,17 +115,17 @@
       # Route wireguard traffic so that users can access the internet.
       postUp = ''
         ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.27.0.1/24 -o enp0s31f6 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.27.0.1/24 -o ${eth_interface} -j MASQUERADE
         ${pkgs.iptables}/bin/ip6tables -A FORWARD -i wg0 -j ACCEPT
-        ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -s fdc9:281f:04d7:9ee9::1/64 -o enp0s31f6 -j MASQUERADE
+        ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -s fdc9:281f:04d7:9ee9::1/64 -o ${eth_interface} -j MASQUERADE
       '';
 
       # Undo the above
       preDown = ''
         ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.27.0.1/24 -o enp0s31f6 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.27.0.1/24 -o ${eth_interface} -j MASQUERADE
         ${pkgs.iptables}/bin/ip6tables -D FORWARD -i wg0 -j ACCEPT
-        ${pkgs.iptables}/bin/ip6tables -t nat -D POSTROUTING -s fdc9:281f:04d7:9ee9::1/64 -o enp0s31f6 -j MASQUERADE
+        ${pkgs.iptables}/bin/ip6tables -t nat -D POSTROUTING -s fdc9:281f:04d7:9ee9::1/64 -o ${eth_interface} -j MASQUERADE
       '';
 
       peers = [
