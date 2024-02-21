@@ -13,11 +13,11 @@
     home,
     nixpkgs,
   }: {
-    nixosConfigurations.sothatwemaybefree = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.imil = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         home.nixosModules.home-manager
-        ./machines/sothatwemaybefree/configuration.nix
+        ./machines/imil/configuration.nix
       ];
     };
     nixosConfigurations.danba-oussama-pqshield = nixpkgs.lib.nixosSystem {

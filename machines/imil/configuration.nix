@@ -34,7 +34,7 @@
     description = "Oussama Danba";
     extraGroups = ["networkmanager" "wheel" "wireshark"];
   };
-  networking.hostName = "sothatwemaybefree";
+  networking.hostName = "imil";
 
   # Programs
   home-manager.users.odanba = {pkgs, ...}: {
