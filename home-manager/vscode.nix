@@ -19,6 +19,7 @@
         xaver.clang-format
         rust-lang.rust-analyzer
         mkhl.direnv
+        timonwong.shellcheck
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
