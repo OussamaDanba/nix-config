@@ -21,7 +21,6 @@
         mkhl.direnv
         timonwong.shellcheck
         gruntfuggly.todo-tree
-        streetsidesoftware.code-spell-checker
         yzhang.markdown-all-in-one
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
@@ -38,14 +37,6 @@
           publisher = "cschlosser";
           version = "1.4.0";
           sha256 = "sha256-InEfF1X7AgtsV47h8WWq5DZh6k/wxYhl2r/pLZz9JbU=";
-        }
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "code-spell-checker-british-english";
-          publisher = "streetsidesoftware";
-          version = "1.4.4";
-          sha256 = "sha256-TM+pzqV/vyCnhLulLlhT4p+9p7VmrdO24EotZk0vDVk=";
         }
       ];
     userSettings = {
@@ -77,7 +68,6 @@
       "redhat.telemetry.enabled" = false;
       "files.insertFinalNewline" = true;
       "files.trimFinalNewlines" = true;
-      "cSpell.language" = "en-GB,en";
     };
   };
 
