@@ -33,7 +33,7 @@
     description = "Oussama Danba";
     extraGroups = ["networkmanager" "wheel" "wireshark"];
   };
-  networking.hostName = "danba-oussama-pqshield";
+  networking.hostName = "prox";
 
   # Programs
   home-manager.users.odanba = {pkgs, ...}: {

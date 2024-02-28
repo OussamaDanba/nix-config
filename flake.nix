@@ -20,11 +20,11 @@
         ./machines/imil/configuration.nix
       ];
     };
-    nixosConfigurations.danba-oussama-pqshield = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.prox = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         home.nixosModules.home-manager
-        ./machines/danba-oussama-pqshield/configuration.nix
+        ./machines/prox/configuration.nix
       ];
     };
     nixosConfigurations.vale = nixpkgs.lib.nixosSystem {
