@@ -76,7 +76,7 @@
     wg0 = {
       # "systemctl stop/start wg-quick-wg0.service" should work.
       # In practice it doesn't seem to connect afterwards?
-      autostart = true;
+      autostart = false;
       address = ["10.27.0.3/32" "fdc9:281f:04d7:9ee9::3/128"];
       dns = ["1.1.1.1" "8.8.8.8"];
       privateKeyFile = "/home/odanba/wireguard-keys/private_key";
