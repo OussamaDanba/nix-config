@@ -66,10 +66,10 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["odanba"];
 
-  # udev rules for Arty board
+  # udev rules for Arty-A7 board.
+  # Note the ATTRS and not ATTR which is incorrect...
   services.udev.extraRules = ''
-    ATTR{idVendor}=="1443", MODE:="666"
-    ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", MODE:="666"
+    ACTION=="add", ATTRS{idVendor}=="0403", ATTRS{manufacturer}=="Digilent", MODE:="666"
   '';
 
   networking.wg-quick.interfaces = {
