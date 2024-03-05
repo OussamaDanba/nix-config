@@ -20,6 +20,7 @@
         timonwong.shellcheck
         gruntfuggly.todo-tree
         yzhang.markdown-all-in-one
+        sanaajani.taskrunnercode
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
