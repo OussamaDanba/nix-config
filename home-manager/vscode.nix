@@ -11,7 +11,7 @@
       [
         jnoortheen.nix-ide
         ms-vscode.cmake-tools
-        # ms-vscode.cpptools # Broken currently because it downloads a binary
+        ms-vscode.cpptools
         ms-vsliveshare.vsliveshare
         redhat.vscode-yaml
         twxs.cmake
@@ -68,6 +68,9 @@
       "redhat.telemetry.enabled" = false;
       "files.insertFinalNewline" = true;
       "files.trimFinalNewlines" = true;
+      "cmake.configureOnOpen" = false;
+      "cmake.showOptionsMovedNotification" = false;
+      "C_Cpp.errorSquiggles" = "enabled";
     };
   };
 
