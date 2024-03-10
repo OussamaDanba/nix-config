@@ -47,7 +47,6 @@
 
     home = {
       packages = with pkgs; [
-        citra-nightly
         discord
         google-drive-ocamlfuse
         lutris
