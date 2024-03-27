@@ -10,9 +10,11 @@
     extensions = with pkgs.vscode-extensions;
       [
         jnoortheen.nix-ide
+        ms-vscode.cmake-tools
         ms-vscode.cpptools
         ms-vsliveshare.vsliveshare
         redhat.vscode-yaml
+        twxs.cmake
         usernamehw.errorlens
         xaver.clang-format
         rust-lang.rust-analyzer
@@ -67,6 +69,8 @@
       "redhat.telemetry.enabled" = false;
       "files.insertFinalNewline" = true;
       "files.trimFinalNewlines" = true;
+      "cmake.configureOnOpen" = false;
+      "cmake.showOptionsMovedNotification" = false;
       "C_Cpp.errorSquiggles" = "enabled";
     };
   };
