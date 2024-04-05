@@ -20,6 +20,13 @@
         ./machines/imil/configuration.nix
       ];
     };
+    nixosConfigurations.lemuria = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        home.nixosModules.home-manager
+        ./machines/lemuria/configuration.nix
+      ];
+    };
     nixosConfigurations.prox = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
