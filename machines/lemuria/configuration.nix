@@ -30,7 +30,7 @@
   users.users.odanba = {
     isNormalUser = true;
     description = "Oussama Danba";
-    extraGroups = ["networkmanager" "wheel" "wireshark"];
+    extraGroups = ["networkmanager" "wheel" "wireshark" "video"];
   };
   networking.hostName = "lemuria";
 
@@ -60,6 +60,10 @@
       userName = "Oussama Danba";
     };
   };
+
+  environment.systemPackages = [
+    pkgs.v4l-utils
+  ];
 
   # udev rules for Arty-A7 board.
   # Note the ATTRS and not ATTR which is incorrect...

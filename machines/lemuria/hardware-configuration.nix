@@ -55,6 +55,15 @@
       ];
     };
 
+    ipu6 = {
+      enable = true;
+      platform = "ipu6ep";
+    };
+
+    firmware = with pkgs; [
+      unstable.ivsc-firmware
+    ];
+
     keyboard.zsa.enable = true;
   };
   services.xserver.videoDrivers = ["intel"];
