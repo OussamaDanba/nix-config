@@ -53,14 +53,6 @@
         ./machines/lemuria/configuration.nix
       ];
     };
-    nixosConfigurations.prox = nixpkgs.lib.nixosSystem {
-      inherit pkgs;
-      inherit system;
-      modules = [
-        home.nixosModules.home-manager
-        ./machines/prox/configuration.nix
-      ];
-    };
     nixosConfigurations.vale = nixpkgs.lib.nixosSystem {
       inherit pkgs;
       inherit system;
