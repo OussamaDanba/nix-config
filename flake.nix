@@ -29,6 +29,14 @@
       ];
     };
   in {
+    nixosConfigurations.garoh = nixpkgs.lib.nixosSystem {
+      inherit pkgs;
+      inherit system;
+      modules = [
+        home.nixosModules.home-manager
+        ./machines/garoh/configuration.nix
+      ];
+    };
     nixosConfigurations.imil = nixpkgs.lib.nixosSystem {
       inherit pkgs;
       inherit system;
