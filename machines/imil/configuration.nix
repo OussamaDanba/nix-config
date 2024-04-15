@@ -52,13 +52,7 @@
         lutris
         nvtop-amd
         qbittorrent
-        # ascension
-        appimage-run
-        dxvk
-        mono
-        wget
-        winetricks
-        wineWowPackages.waylandFull
+        prismlauncher
       ];
 
       stateVersion = "22.11";
