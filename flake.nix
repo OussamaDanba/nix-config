@@ -61,12 +61,14 @@
         ./home-manager/dev-tools-cli.nix
         ./home-manager/gnome-extensions.nix
         {
+          xsession.enable = true;
           programs.home-manager.enable = true;
           home = {
             username = "odanba";
             homeDirectory = "/home/odanba";
             packages = with pkgs; [
               google-chrome
+              htop
               python3Packages.pyserial
               remmina
               slack
