@@ -53,37 +53,5 @@
         ./machines/vale/configuration.nix
       ];
     };
-    homeConfigurations.lemuria = home.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        ./home-manager/common-cli.nix
-        ./home-manager/common-gui.nix
-        ./home-manager/dev-tools-cli.nix
-        ./home-manager/gnome-extensions.nix
-        {
-          xsession.enable = true;
-          programs.home-manager.enable = true;
-          home = {
-            username = "odanba";
-            homeDirectory = "/home/odanba";
-            packages = with pkgs; [
-              google-chrome
-              htop
-              python3Packages.pyserial
-              remmina
-              slack
-              sshfs
-            ];
-
-            stateVersion = "23.11";
-          };
-
-          programs.git = {
-            userEmail = "oussama.danba@pqshield.com";
-            userName = "Oussama Danba";
-          };
-        }
-      ];
-    };
   };
 }
