@@ -45,14 +45,6 @@
         ./machines/imil/configuration.nix
       ];
     };
-    nixosConfigurations.lemuria = nixpkgs.lib.nixosSystem {
-      inherit pkgs;
-      inherit system;
-      modules = [
-        home.nixosModules.home-manager
-        ./machines/lemuria/configuration.nix
-      ];
-    };
     nixosConfigurations.vale = nixpkgs.lib.nixosSystem {
       inherit pkgs;
       inherit system;
