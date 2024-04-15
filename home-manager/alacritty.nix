@@ -32,7 +32,7 @@
           green = "#33FF00";
           yellow = "#FEFF00";
           blue = "#0066FF";
-          magent = "#CC00FF";
+          magenta = "#CC00FF";
           cyan = "#00FFFF";
           white = "#FFFFFF";
         };
