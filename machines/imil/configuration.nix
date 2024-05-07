@@ -47,7 +47,7 @@
 
     home = {
       packages = with pkgs; [
-        discord
+        unstable.vesktop
         google-drive-ocamlfuse
         lutris
         nvtop-amd

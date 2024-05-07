@@ -45,7 +45,7 @@
 
     home = {
       packages = with pkgs; [
-        discord
+        unstable.vesktop
         nvtop-amd
       ];
 
