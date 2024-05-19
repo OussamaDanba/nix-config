@@ -47,12 +47,16 @@
 
     home = {
       packages = with pkgs; [
-        unstable.vesktop
+        appimage-run
+        dxvk
         google-drive-ocamlfuse
         lutris
         nvtop-amd
-        qbittorrent
         prismlauncher
+        qbittorrent
+        unstable.vesktop
+        winetricks
+        wineWowPackages.waylandFull
       ];
 
       stateVersion = "22.11";
