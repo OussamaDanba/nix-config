@@ -25,49 +25,49 @@
     wally-cli
   ];
 
-  programs.helix = {
-    enable = true;
-    settings = {
-      theme = "base16_transparent";
-      editor = {
-        line-number = "relative";
-        cursorline = true;
-        bufferline = "always";
-        color-modes = true;
-        cursor-shape = {
-          insert = "bar";
-        };
-        whitespace = {
-          render = {
-            space = "all";
-            tab = "all";
-            newline = "none";
-          };
-        };
-        indent-guides = {
-          render = true;
-        };
-        soft-wrap = {
-          enable = true;
-        };
-      };
-      keys = {
-        normal = {
-          "tab" = ":buffer-next";
-          "S-tab" = ":buffer-previous";
-        };
-      };
-    };
-    languages = {
-      language = [
-        {
-          name = "nix";
-          auto-format = true;
-          formatter = {
-            command = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
-          };
-        }
-      ];
-    };
-  };
+  # programs.helix = {
+  #   enable = true;
+  #   settings = {
+  #     theme = "base16_transparent";
+  #     editor = {
+  #       line-number = "relative";
+  #       cursorline = true;
+  #       bufferline = "always";
+  #       color-modes = true;
+  #       cursor-shape = {
+  #         insert = "bar";
+  #       };
+  #       whitespace = {
+  #         render = {
+  #           space = "all";
+  #           tab = "all";
+  #           newline = "none";
+  #         };
+  #       };
+  #       indent-guides = {
+  #         render = true;
+  #       };
+  #       soft-wrap = {
+  #         enable = true;
+  #       };
+  #     };
+  #     keys = {
+  #       normal = {
+  #         "tab" = ":buffer-next";
+  #         "S-tab" = ":buffer-previous";
+  #       };
+  #     };
+  #   };
+  #   languages = {
+  #     language = [
+  #       {
+  #         name = "nix";
+  #         auto-format = true;
+  #         formatter = {
+  #           command = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
+  #         };
+  #       }
+  #     ];
+  #   };
+  # };
 }
