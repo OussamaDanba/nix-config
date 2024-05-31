@@ -47,7 +47,6 @@
 
     home = {
       packages = with pkgs; [
-        appimage-run
         ardour
         dxvk
         google-drive-ocamlfuse

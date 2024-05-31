@@ -66,4 +66,9 @@
 
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 }
