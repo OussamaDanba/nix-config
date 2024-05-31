@@ -149,7 +149,7 @@ in {
       volumes = ["home-assistant:/config"];
       environment.TZ = "Europe/Amsterdam";
       # Note: Tag needs to change in order for it to be updated
-      image = "ghcr.io/home-assistant/home-assistant:2024.3.0";
+      image = "ghcr.io/home-assistant/home-assistant:2024.5.5";
       extraOptions = [
         "--network=host"
         # Needed to make DHCP discovery work
