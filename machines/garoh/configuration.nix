@@ -46,7 +46,7 @@
     home = {
       packages = with pkgs; [
         unstable.vesktop
-        nvtop-amd
+        nvtopPackages.amd
       ];
 
       stateVersion = "23.11";

@@ -52,7 +52,7 @@
         dxvk
         google-drive-ocamlfuse
         lutris
-        nvtop-amd
+        nvtopPackages.amd
         prismlauncher
         qbittorrent
         unstable.vesktop

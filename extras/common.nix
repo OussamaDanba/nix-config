@@ -38,7 +38,7 @@
     # Enable Avahi for detection of hosts
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       publish = {
         enable = true;
         addresses = true;
@@ -50,9 +50,9 @@
     };
 
     # Configure keymap in X11 but don't decide whether we use X or not.
-    xserver = {
+    xserver.xkb = {
       layout = "us";
-      xkbVariant = "euro";
+      variant = "euro";
     };
   };
 
