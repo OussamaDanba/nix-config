@@ -37,7 +37,7 @@
           white = "#FFFFFF";
         };
       };
-      key_bindings = [
+      keyboard.bindings = [
         {
           key = "V";
           mods = "Control|Alt";
