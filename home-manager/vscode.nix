@@ -23,6 +23,7 @@
         gruntfuggly.todo-tree
         yzhang.markdown-all-in-one
         sanaajani.taskrunnercode
+        vscodevim.vim
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -60,6 +61,7 @@
         };
       };
       "editor.renderWhitespace" = "all";
+      "editor.lineNumbers" = "relative";
       "extensions.ignoreRecommendations" = true;
       "explorer.confirmDelete" = false;
       "[c]" = {
