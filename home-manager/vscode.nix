@@ -23,7 +23,7 @@
         gruntfuggly.todo-tree
         yzhang.markdown-all-in-one
         sanaajani.taskrunnercode
-        vscodevim.vim
+        # vscodevim.vim
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
