@@ -28,30 +28,19 @@
         })
       ];
     };
+    myNixosSystem = hostname:
+      nixpkgs.lib.nixosSystem {
+        inherit pkgs system;
+        modules = [
+          home.nixosModules.home-manager
+          ./machines/${hostname}/configuration.nix
+        ];
+      };
   in {
-    nixosConfigurations.garoh = nixpkgs.lib.nixosSystem {
-      inherit pkgs;
-      inherit system;
-      modules = [
-        home.nixosModules.home-manager
-        ./machines/garoh/configuration.nix
-      ];
-    };
-    nixosConfigurations.imil = nixpkgs.lib.nixosSystem {
-      inherit pkgs;
-      inherit system;
-      modules = [
-        home.nixosModules.home-manager
-        ./machines/imil/configuration.nix
-      ];
-    };
-    nixosConfigurations.vale = nixpkgs.lib.nixosSystem {
-      inherit pkgs;
-      inherit system;
-      modules = [
-        home.nixosModules.home-manager
-        ./machines/vale/configuration.nix
-      ];
+    nixosConfigurations = {
+      garoh = myNixosSystem "garoh";
+      imil = myNixosSystem "imil";
+      vale = myNixosSystem "vale";
     };
   };
 }
