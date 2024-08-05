@@ -9,5 +9,7 @@
     cmakeCurses
     gdb
     gnumake
+    unstable.zig
+    unstable.zls
   ];
 }

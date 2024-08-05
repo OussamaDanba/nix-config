@@ -23,7 +23,7 @@
         gruntfuggly.todo-tree
         yzhang.markdown-all-in-one
         sanaajani.taskrunnercode
-        # vscodevim.vim
+        ziglang.vscode-zig
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -61,7 +61,6 @@
         };
       };
       "editor.renderWhitespace" = "all";
-      "editor.lineNumbers" = "relative";
       "extensions.ignoreRecommendations" = true;
       "explorer.confirmDelete" = false;
       "[c]" = {
@@ -74,6 +73,9 @@
       "cmake.configureOnOpen" = false;
       "cmake.showOptionsMovedNotification" = false;
       "C_Cpp.errorSquiggles" = "enabled";
+      "zig.path" = "zig";
+      "zig.zls.path" = "zls";
+      "zig.initialSetupDone" = true;
     };
   };
 
