@@ -61,7 +61,7 @@ in {
   # whenever a change is needed.
   services.unifi.enable = true;
   services.unifi.openFirewall = true;
-  services.unifi.unifiPackage = pkgs.unifi;
+  services.unifi.unifiPackage = pkgs.unifi8;
 
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
