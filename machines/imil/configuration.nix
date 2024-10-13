@@ -55,9 +55,10 @@
         nvtopPackages.amd
         prismlauncher
         qbittorrent
-        unstable.vesktop
+        vesktop
         winetricks
         wineWowPackages.waylandFull
+        unstable.ryujinx
       ];
 
       stateVersion = "22.11";

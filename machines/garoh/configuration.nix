@@ -46,7 +46,7 @@
 
     home = {
       packages = with pkgs; [
-        unstable.vesktop
+        vesktop
         nvtopPackages.amd
       ];
 
