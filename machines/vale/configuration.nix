@@ -62,7 +62,7 @@ in {
   services.unifi.enable = true;
   services.unifi.openFirewall = true;
   services.unifi.unifiPackage = pkgs.unifi8;
-  services.unifi.mongodbPackage = pkgs.mongodb-7_0;
+  services.unifi.mongodbPackage = pkgs.mongodb-ce;
 
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
