@@ -10,21 +10,18 @@
     desktopManager.gnome.enable = true;
     desktopManager.xterm.enable = false;
   };
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      epiphany
-      gnome-console
-      gnome-tour
-    ])
-    ++ (with pkgs.gnome; [
-      geary
-      gnome-calendar
-      gnome-characters
-      gnome-contacts
-      gnome-maps
-      gnome-music
-      gnome-weather
-      totem
-      yelp
-    ]);
+  environment.gnome.excludePackages = with pkgs; [
+    epiphany
+    geary
+    gnome-calendar
+    gnome-characters
+    gnome-console
+    gnome-contacts
+    gnome-maps
+    gnome-music
+    gnome-tour
+    gnome-weather
+    totem
+    yelp
+  ];
 }

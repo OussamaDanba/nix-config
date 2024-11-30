@@ -62,6 +62,7 @@ in {
   services.unifi.enable = true;
   services.unifi.openFirewall = true;
   services.unifi.unifiPackage = pkgs.unifi8;
+  services.unifi.mongodbPackage = pkgs.mongodb-7_0;
 
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
@@ -157,7 +158,7 @@ in {
       volumes = ["home-assistant:/config"];
       environment.TZ = "Europe/Amsterdam";
       # Note: Tag needs to change in order for it to be updated
-      image = "ghcr.io/home-assistant/home-assistant:2024.10.2";
+      image = "ghcr.io/home-assistant/home-assistant:2024.11.3";
       extraOptions = [
         "--network=host"
         # Needed to make DHCP discovery work

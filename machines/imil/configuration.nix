@@ -58,7 +58,6 @@
         vesktop
         winetricks
         wineWowPackages.waylandFull
-        unstable.ryujinx
       ];
 
       stateVersion = "22.11";
