@@ -61,6 +61,17 @@
 
   programs.steam.enable = true;
 
+  services.resolved = {
+    enable = true;
+    dnsovertls = "true";
+    extraConfig = ''
+      DNS=45.90.28.0#laptop-391bcc.dns.nextdns.io
+      DNS=2a07:a8c0::#laptop-391bcc.dns.nextdns.io
+      DNS=45.90.30.0#laptop-391bcc.dns.nextdns.io
+      DNS=2a07:a8c1::#laptop-391bcc.dns.nextdns.io
+    '';
+  };
+
   networking.wg-quick.interfaces = {
     wg0 = {
       # "systemctl stop/start wg-quick-wg0.service" should work.

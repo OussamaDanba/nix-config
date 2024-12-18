@@ -60,6 +60,17 @@ in {
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
 
+  services.resolved = {
+    enable = true;
+    dnsovertls = "true";
+    extraConfig = ''
+      DNS=45.90.28.0#server-391bcc.dns.nextdns.io
+      DNS=2a07:a8c0::#server-391bcc.dns.nextdns.io
+      DNS=45.90.30.0#server-391bcc.dns.nextdns.io
+      DNS=2a07:a8c1::#server-391bcc.dns.nextdns.io
+    '';
+  };
+
   systemd = {
     packages = [pkgs.qbittorrent-nox];
     services."qbittorrent-nox@odanba" = {
