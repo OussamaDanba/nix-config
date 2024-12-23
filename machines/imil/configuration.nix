@@ -10,6 +10,7 @@
     ../../extras/cups.nix
     ../../extras/gnome.nix
     ../../extras/wireshark.nix
+    ../../extras/sunshine.nix
   ];
 
   # Bootloader
