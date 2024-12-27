@@ -21,6 +21,7 @@
 in {
   services.sunshine = {
     enable = true;
+    autoStart = false;
     openFirewall = true;
     capSysAdmin = true; # Use security wrapper, required with Wayland
   };
