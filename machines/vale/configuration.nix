@@ -165,6 +165,12 @@ in {
         "--cap-add=CAP_NET_RAW"
       ];
     };
+    containers.esphome = {
+      volumes = ["esphome:/config"];
+      # Note: Tag needs to change in order for it to be updated
+      image = "ghcr.io/esphome/esphome:2024.12.4";
+      ports = ["0.0.0.0:6052:6052"];
+    };
   };
 
   system.stateVersion = "23.11";
