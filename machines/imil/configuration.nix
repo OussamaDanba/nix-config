@@ -59,6 +59,7 @@
         vesktop
         winetricks
         wineWowPackages.waylandFull
+        mangohud
       ];
 
       stateVersion = "22.11";
