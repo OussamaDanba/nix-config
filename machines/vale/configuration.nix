@@ -148,6 +148,12 @@ in {
           presharedKeyFile = "/home/odanba/wireguard-keys/peer3_psk";
           allowedIPs = ["10.27.0.4/32" "fdc9:281f:04d7:9ee9::4/128"];
         }
+        # Laptop
+        {
+          publicKey = "SOYx+5CfWufMxxXh+EfHZHEzvgy5ZnBlRFugiva5dj8=";
+          presharedKeyFile = "/home/odanba/wireguard-keys/peer4_psk";
+          allowedIPs = ["10.27.0.5/32" "fdc9:281f:04d7:9ee9::5/128"];
+        }
       ];
     };
   };
