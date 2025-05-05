@@ -32,7 +32,7 @@ in {
   users.users.odanba = {
     isNormalUser = true;
     description = "Oussama Danba";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
   };
   networking.hostName = "vale";
 
@@ -78,9 +78,10 @@ in {
   };
 
   environment.systemPackages = [
+    pkgs.docker-compose
     pkgs.jellyfin
-    pkgs.jellyfin-web
     pkgs.jellyfin-ffmpeg
+    pkgs.jellyfin-web
     pkgs.qbittorrent-nox
   ];
 
@@ -91,6 +92,8 @@ in {
       4321
       # Home Assistant
       8123
+      # Minecraft
+      25565
     ];
     allowedUDPPorts = [
       # wireguard
@@ -156,6 +159,11 @@ in {
         }
       ];
     };
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
   };
 
   virtualisation.oci-containers = {
