@@ -172,7 +172,7 @@ in {
       volumes = ["home-assistant:/config"];
       environment.TZ = "Europe/Amsterdam";
       # Note: Tag needs to change in order for it to be updated
-      image = "ghcr.io/home-assistant/home-assistant:2025.4.0";
+      image = "ghcr.io/home-assistant/home-assistant:2025.7.1";
       extraOptions = [
         "--network=host"
         # Needed to make DHCP discovery work
@@ -182,7 +182,7 @@ in {
     containers.esphome = {
       volumes = ["esphome:/config"];
       # Note: Tag needs to change in order for it to be updated
-      image = "ghcr.io/esphome/esphome:2024.12.4";
+      image = "ghcr.io/esphome/esphome:2025.6.3";
       ports = ["0.0.0.0:6052:6052"];
     };
   };
