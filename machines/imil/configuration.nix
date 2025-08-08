@@ -65,6 +65,8 @@
         winetricks
         wineWowPackages.waylandFull
         mangohud
+        gimp
+        darktable
       ];
 
       stateVersion = "22.11";
