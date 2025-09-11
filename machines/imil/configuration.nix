@@ -67,6 +67,7 @@
         mangohud
         gimp
         darktable
+        godot
       ];
 
       stateVersion = "22.11";
