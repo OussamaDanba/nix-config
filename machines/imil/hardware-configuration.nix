@@ -21,13 +21,17 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/1771874c-a555-420a-a807-a563511868a9";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/27148227-b756-4333-a172-88f854d965e8";
+    fsType = "btrfs";
+    options = ["subvol=@" "compress=zstd"];
   };
 
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/506B-29DA";
+  boot.initrd.luks.devices."luks-9ec9154c-fb06-4251-aee6-741cda407c43".device = "/dev/disk/by-uuid/9ec9154c-fb06-4251-aee6-741cda407c43";
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/D445-1955";
     fsType = "vfat";
+    options = ["fmask=0077" "dmask=0077"];
   };
 
   hardware = {

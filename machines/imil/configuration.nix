@@ -29,7 +29,7 @@
       };
       timeout = 1;
       efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot/efi";
+      efi.efiSysMountPoint = "/boot";
     };
     supportedFilesystems = ["ntfs"];
   };
@@ -70,7 +70,7 @@
         godot
       ];
 
-      stateVersion = "22.11";
+      stateVersion = "25.05";
     };
 
     programs.git = {
@@ -92,5 +92,5 @@
     '';
   };
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "25.05";
 }
