@@ -64,10 +64,8 @@ in {
     enable = true;
     dnsovertls = "true";
     extraConfig = ''
-      DNS=45.90.28.0#server-391bcc.dns.nextdns.io
-      DNS=2a07:a8c0::#server-391bcc.dns.nextdns.io
-      DNS=45.90.30.0#server-391bcc.dns.nextdns.io
-      DNS=2a07:a8c1::#server-391bcc.dns.nextdns.io
+      DNS=1.1.1.1 8.8.8.8
+      FallbackDNS=1.0.0.1 8.8.4.4
     '';
   };
 
