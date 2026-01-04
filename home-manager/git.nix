@@ -6,7 +6,13 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    extraConfig = {init.defaultBranch = "main";};
+    settings = {
+      extraConfig = {init.defaultBranch = "main";};
+      user = {
+        email = "oussama@danba.nl";
+        name = "Oussama Danba";
+      };
+    };
     ignores = [".vscode" ".direnv"];
   };
 

@@ -2,10 +2,10 @@
   description = "Nix machines";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home.url = "github:nix-community/home-manager/release-25.05";
+    home.url = "github:nix-community/home-manager/release-25.11";
     home.inputs.nixpkgs.follows = "nixpkgs";
   };
 

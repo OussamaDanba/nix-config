@@ -4,11 +4,9 @@
   ...
 }: {
   # GNOME specific
-  services.xserver = {
-    enable = true;
+  services = {
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    desktopManager.xterm.enable = false;
   };
   environment.gnome.excludePackages = with pkgs; [
     epiphany

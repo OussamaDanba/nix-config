@@ -50,11 +50,6 @@ in {
 
       stateVersion = "23.11";
     };
-
-    programs.git = {
-      userEmail = "oussama@danba.nl";
-      userName = "Oussama Danba";
-    };
   };
 
   services.jellyfin.enable = true;
@@ -172,7 +167,7 @@ in {
       volumes = ["home-assistant:/config"];
       environment.TZ = "Europe/Amsterdam";
       # Note: Tag needs to change in order for it to be updated
-      image = "ghcr.io/home-assistant/home-assistant:2025.11.3";
+      image = "ghcr.io/home-assistant/home-assistant:2025.12.5";
       extraOptions = [
         "--network=host"
         # Needed to make DHCP discovery work
@@ -182,7 +177,7 @@ in {
     containers.esphome = {
       volumes = ["esphome:/config"];
       # Note: Tag needs to change in order for it to be updated
-      image = "ghcr.io/esphome/esphome:2025.11.2";
+      image = "ghcr.io/esphome/esphome:2025.12.4";
       ports = ["0.0.0.0:6052:6052"];
     };
   };

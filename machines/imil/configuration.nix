@@ -72,11 +72,6 @@
 
       stateVersion = "25.05";
     };
-
-    programs.git = {
-      userEmail = "oussama@danba.nl";
-      userName = "Oussama Danba";
-    };
   };
 
   programs.steam.enable = true;

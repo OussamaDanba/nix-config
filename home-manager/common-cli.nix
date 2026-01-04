@@ -16,7 +16,7 @@
     fd
     file
     pciutils
-    python3Full
+    python3
     python3Packages.pip
     ripgrep
     tree
