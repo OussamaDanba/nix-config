@@ -15,6 +15,7 @@
     atool
     fd
     file
+    keymapp
     pciutils
     python3
     python3Packages.pip
@@ -22,7 +23,6 @@
     tree
     unzip
     usbutils
-    wally-cli
   ];
 
   # programs.helix = {
