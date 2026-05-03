@@ -13,10 +13,10 @@
     ../../extras/sunshine.nix
   ];
 
-  services.unifi.enable = true;
-  services.unifi.openFirewall = true;
-  services.unifi.unifiPackage = pkgs.unifi;
-  services.unifi.mongodbPackage = pkgs.mongodb-ce;
+  # services.unifi.enable = true;
+  # services.unifi.openFirewall = true;
+  # services.unifi.unifiPackage = pkgs.unifi;
+  # services.unifi.mongodbPackage = pkgs.mongodb-ce;
 
   # Bootloader
   boot = {
