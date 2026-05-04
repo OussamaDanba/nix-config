@@ -82,6 +82,7 @@
     extraConfig = ''
       DNS=1.1.1.1 8.8.8.8
       FallbackDNS=1.0.0.1 8.8.4.4
+      MulticastDNS=no
     '';
   };
 
