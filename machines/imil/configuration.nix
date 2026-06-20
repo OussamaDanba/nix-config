@@ -63,7 +63,7 @@
         qbittorrent
         vesktop
         winetricks
-        wineWowPackages.waylandFull
+        wineWow64Packages.waylandFull
         mangohud
         gimp
         darktable
@@ -78,12 +78,10 @@
 
   services.resolved = {
     enable = true;
-    dnsovertls = "true";
-    extraConfig = ''
-      DNS=1.1.1.1 8.8.8.8
-      FallbackDNS=1.0.0.1 8.8.4.4
-      MulticastDNS=no
-    '';
+    settings.Resolve = {
+      DNSOverTLS = true;
+      DNS = ["1.1.1.1" "8.8.8.8"];
+    };
   };
 
   services.ollama = {
