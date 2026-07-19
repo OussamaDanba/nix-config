@@ -10,6 +10,7 @@
   ];
 
   boot = {
+    boot.kernelPackages = pkgs.linuxPackages_zen;
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
       kernelModules = [];
@@ -19,6 +20,7 @@
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
+      "pcie_acs_override=downstream,multifunction"
       # Pass through GPU, USB controller, and Audio
       "vfio-pci.ids=8086:4692,8086:7ae0,8086:7aa7,8086:7ad0"
 
