@@ -23,6 +23,7 @@
     tree
     unzip
     usbutils
+    virt-manager
   ];
 
   # programs.helix = {
