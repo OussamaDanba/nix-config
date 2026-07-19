@@ -19,8 +19,8 @@
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
-      # Pass through GPU and USB controller
-      "vfio-pci.ids=8086:4692,8086:7ae0,8086:7aa7"
+      # Pass through GPU, USB controller, and Audio
+      "vfio-pci.ids=8086:4692,8086:7ae0,8086:7aa7,8086:7ad0"
 
       # Prevent NixOS from claiming anything related to video
       "initcall_blacklist=sysfb_init"
