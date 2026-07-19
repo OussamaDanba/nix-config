@@ -14,9 +14,20 @@
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
       kernelModules = [];
     };
-    kernelModules = ["kvm-intel"];
+    kernelModules = ["vfio_pci" "vfio" "vfio_iommu_type1" "kvm-intel"];
     extraModulePackages = [];
-    kernelParams = ["pcie_aspm=force"];
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+      # Pass through GPU and USB controller
+      "vfio-pci.ids=8086:4692,8086:7ae0,8086:7aa7"
+
+      # Prevent NixOS from claiming anything related to video
+      "initcall_blacklist=sysfb_init"
+      "video=efifb:off"
+      "video=simplefb:off"
+    ];
+    blacklistedKernelModules = ["i915" "xe"];
   };
 
   fileSystems."/" = {

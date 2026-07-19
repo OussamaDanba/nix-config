@@ -32,7 +32,7 @@ in {
   users.users.odanba = {
     isNormalUser = true;
     description = "Oussama Danba";
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = ["networkmanager" "wheel" "docker" "libvirtd"];
   };
   networking.hostName = "vale";
 
@@ -178,6 +178,14 @@ in {
       # Note: Tag needs to change in order for it to be updated
       image = "ghcr.io/esphome/esphome:2026.6.1";
       ports = ["0.0.0.0:6052:6052"];
+    };
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
     };
   };
 
